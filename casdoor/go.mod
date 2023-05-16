@@ -1,4 +1,4 @@
-module github.com/abmpio/irisx/middleware/casdoor
+module github.com/abmpio/irisx/casdoor
 
 go 1.19
 
