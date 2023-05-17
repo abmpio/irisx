@@ -103,6 +103,10 @@ func FromHeader(key string) TokenExtractor {
 		if headerValue == "" {
 			return "", nil // No error, just no token
 		}
+		authHeaderParts := strings.Split(headerValue, " ")
+		if len(authHeaderParts) > 1 && strings.ToLower(authHeaderParts[0]) == "bearer" {
+			return "", nil
+		}
 		return headerValue, nil
 	}
 }
