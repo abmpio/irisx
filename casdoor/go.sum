@@ -52,6 +52,8 @@ github.com/Shopify/goreferrer v0.0.0-20220729165902-8cddb4f5de06 h1:KkH3I3sJuOLP
 github.com/Shopify/goreferrer v0.0.0-20220729165902-8cddb4f5de06/go.mod h1:7erjKLwalezA0k99cWs5L11HWOAPNjdUZ6RxH1BXbbM=
 github.com/abmpio/configurationx v0.0.0-20230515143411-56ed2e75b252 h1:RWNVMcgdvaJa+owfev+2w5NCrrM8ZNxT4rdxSn2iBOM=
 github.com/abmpio/configurationx v0.0.0-20230515143411-56ed2e75b252/go.mod h1:+dKpgI9DK0dmz83PFE2sKDIbflkKS8o8dQkgnCX3orU=
+github.com/abmpio/configurationx v0.0.0-20230517033634-a622297907c6 h1:31JcTkFmjZlV9lH4AWPPx0NMldqVY2fJgXY3SJDUPoI=
+github.com/abmpio/configurationx v0.0.0-20230517033634-a622297907c6/go.mod h1:+dKpgI9DK0dmz83PFE2sKDIbflkKS8o8dQkgnCX3orU=
 github.com/ajg/form v1.5.1 h1:t9c7v8JUKu/XxOGBU0yjNpaMloxGEJhUkqFRq0ibGeU=
 github.com/andybalholm/brotli v1.0.5 h1:8uQZIdzKmjc/iuPu7O2ioW48L81FgatrcpfFmiq/cCs=
 github.com/andybalholm/brotli v1.0.5/go.mod h1:fO7iG3H7G2nSZ7m0zPUDn85XEX2GTukHGRSepvi9Eig=

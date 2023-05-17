@@ -3,7 +3,7 @@ module github.com/abmpio/irisx/casdoor
 go 1.19
 
 require (
-	github.com/abmpio/configurationx v0.0.0-20230515143411-56ed2e75b252
+	github.com/abmpio/configurationx v0.0.0-20230517033634-a622297907c6
 	github.com/casdoor/casdoor-go-sdk v0.20.1
 	github.com/kataras/iris/v12 v12.2.0
 )

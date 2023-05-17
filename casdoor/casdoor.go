@@ -42,7 +42,15 @@ func New(opts ...CasdoorOptions) *Middleware {
 	} else {
 		options = opts[0]
 	}
-	options.Jwt.Normalize()
+	options.Normalize()
+	if !options.Disabled {
+		casdoorsdk.InitConfig(options.Endpoint,
+			options.ClientId,
+			options.ClientSecret,
+			options.Certificate,
+			options.OrganizationName,
+			options.ApplicationName)
+	}
 
 	if options.ErrorHandler == nil {
 		options.ErrorHandler = OnError
@@ -158,4 +166,12 @@ func (m *Middleware) CheckJWT(ctx iris.Context) error {
 	ctx.Values().Set(m.Options.Jwt.ContextKey, claim)
 
 	return nil
+}
+
+func (m *Middleware) GetUserClaims(ctx iris.Context) *casdoorsdk.Claims {
+	claims, ok := ctx.Value(m.Options.Jwt.ContextKey).(*casdoorsdk.Claims)
+	if !ok {
+		return nil
+	}
+	return claims
 }
