@@ -95,6 +95,43 @@ func FromAuthHeader(ctx iris.Context) (string, error) {
 	return authHeaderParts[1], nil
 }
 
+// FromHeader is a "TokenExtractor" that takes a give context and extracts
+// the specified key value from header.
+func FromHeader(key string) TokenExtractor {
+	return func(ctx iris.Context) (string, error) {
+		headerValue := ctx.GetHeader(key)
+		if headerValue == "" {
+			return "", nil // No error, just no token
+		}
+		return headerValue, nil
+	}
+}
+
+// FromParameter returns a function that extracts the token from the specified
+// query string parameter
+func FromParameter(param string) TokenExtractor {
+	return func(ctx iris.Context) (string, error) {
+		return ctx.URLParam(param), nil
+	}
+}
+
+// FromFirst returns a function that runs multiple token extractors and takes the
+// first token it finds
+func FromFirst(extractors ...TokenExtractor) TokenExtractor {
+	return func(ctx iris.Context) (string, error) {
+		for _, ex := range extractors {
+			token, err := ex(ctx)
+			if err != nil {
+				return "", err
+			}
+			if token != "" {
+				return token, nil
+			}
+		}
+		return "", nil
+	}
+}
+
 func logf(ctx iris.Context, format string, args ...interface{}) {
 	ctx.Application().Logger().Debugf(format, args...)
 }
@@ -127,7 +164,7 @@ func (m *Middleware) Serve(ctx iris.Context) {
 func (m *Middleware) CheckJWT(ctx iris.Context) error {
 
 	// Use the specified token extractor to extract a token from the request
-	token, err := FromAuthHeader(ctx)
+	token, err := m.Options.Extractor(ctx)
 	// If debugging is turned on, log the outcome
 	if err != nil {
 		logf(ctx, "Error extracting JWT: %v", err)
