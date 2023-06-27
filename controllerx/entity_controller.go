@@ -18,7 +18,7 @@ import (
 	webapp "abmp.cc/webserver/app"
 )
 
-type ModelController[T mongodbr.IEntity] struct {
+type EntityController[T mongodbr.IEntity] struct {
 	RouterPath    string
 	EntityService entity.IEntityService[T]
 
@@ -26,7 +26,7 @@ type ModelController[T mongodbr.IEntity] struct {
 	once    sync.Once
 }
 
-func (c *ModelController[T]) RegistRouter(webapp *webapp.Application, opts ...BaseEntityControllerOption) router.Party {
+func (c *EntityController[T]) RegistRouter(webapp *webapp.Application, opts ...BaseEntityControllerOption) router.Party {
 	for _, eachOpt := range opts {
 		eachOpt(&(c.options))
 	}
@@ -62,7 +62,7 @@ func (c *ModelController[T]) RegistRouter(webapp *webapp.Application, opts ...Ba
 	return routerParty
 }
 
-func (c *ModelController[T]) getEntityService() entity.IEntityService[T] {
+func (c *EntityController[T]) GetEntityService() entity.IEntityService[T] {
 	c.once.Do(func() {
 		if c.EntityService != nil {
 			return
@@ -72,7 +72,7 @@ func (c *ModelController[T]) getEntityService() entity.IEntityService[T] {
 	return c.EntityService
 }
 
-func (c *ModelController[T]) All(ctx iris.Context) {
+func (c *EntityController[T]) All(ctx iris.Context) {
 	filter := map[string]interface{}{}
 	// auto filter current userId
 	AddUserIdFilterIfNeed(filter, new(T), ctx)
@@ -80,9 +80,9 @@ func (c *ModelController[T]) All(ctx iris.Context) {
 	var list []T
 	var err error
 	if len(filter) > 0 {
-		list, err = c.getEntityService().FindList(filter)
+		list, err = c.GetEntityService().FindList(filter)
 	} else {
-		list, err = c.getEntityService().FindAll()
+		list, err = c.GetEntityService().FindAll()
 	}
 	if err != nil {
 		controller.HandleErrorInternalServerError(ctx, err)
@@ -91,7 +91,7 @@ func (c *ModelController[T]) All(ctx iris.Context) {
 	controller.HandleSuccessWithListData(ctx, list, int64(len(list)))
 }
 
-func (c *ModelController[T]) GetList(ctx iris.Context) {
+func (c *EntityController[T]) GetList(ctx iris.Context) {
 	all := filter.MustGetFilterAll(ctx.FormValue)
 	if all {
 		c.All(ctx)
@@ -105,7 +105,7 @@ func (c *ModelController[T]) GetList(ctx iris.Context) {
 
 	// auto filter current userId
 	AddUserIdFilterIfNeed(query, new(T), ctx)
-	service := c.getEntityService()
+	service := c.GetEntityService()
 	list, err := service.FindList(query, mongodbr.FindOptionWithSort(sort),
 		mongodbr.FindOptionWithPage(int64(pagination.Page), int64(pagination.Size)))
 	if err != nil {
@@ -122,7 +122,7 @@ func (c *ModelController[T]) GetList(ctx iris.Context) {
 }
 
 // get by id
-func (c *ModelController[T]) GetById(ctx iris.Context) {
+func (c *EntityController[T]) GetById(ctx iris.Context) {
 	idValue := ctx.Params().Get("id")
 	if len(idValue) <= 0 {
 		controller.HandleErrorBadRequest(ctx, errors.New("id must not be empty"))
@@ -134,7 +134,7 @@ func (c *ModelController[T]) GetById(ctx iris.Context) {
 		controller.HandleErrorBadRequest(ctx, fmt.Errorf("invalid id,id must be bson id format,id:%s", idValue))
 		return
 	}
-	item, err := c.getEntityService().FindById(id)
+	item, err := c.GetEntityService().FindById(id)
 	if err != nil {
 		controller.HandleErrorInternalServerError(ctx, err)
 		return
@@ -152,7 +152,7 @@ func (c *ModelController[T]) GetById(ctx iris.Context) {
 }
 
 // create
-func (c *ModelController[T]) Create(ctx iris.Context) {
+func (c *EntityController[T]) Create(ctx iris.Context) {
 	input := new(T)
 	err := ctx.ReadJSON(&input)
 	if err != nil {
@@ -166,9 +166,9 @@ func (c *ModelController[T]) Create(ctx iris.Context) {
 	}
 
 	// handler user info
-	c.setUserInfo(ctx, input)
+	c.SetUserInfo(ctx, input)
 
-	newItem, err := c.getEntityService().Create(input)
+	newItem, err := c.GetEntityService().Create(input)
 	if err != nil {
 		controller.HandleErrorInternalServerError(ctx, err)
 		return
@@ -177,7 +177,7 @@ func (c *ModelController[T]) Create(ctx iris.Context) {
 }
 
 // update
-func (c *ModelController[T]) Update(ctx iris.Context) {
+func (c *EntityController[T]) Update(ctx iris.Context) {
 	idValue := ctx.Params().Get("id")
 	if len(idValue) <= 0 {
 		controller.HandleErrorBadRequest(ctx, errors.New("id must not be empty"))
@@ -188,7 +188,7 @@ func (c *ModelController[T]) Update(ctx iris.Context) {
 		controller.HandleErrorBadRequest(ctx, fmt.Errorf("invalid id,id must be bson id format,id:%s", idValue))
 		return
 	}
-	service := c.getEntityService()
+	service := c.GetEntityService()
 	item, err := service.FindById(id)
 	if err != nil {
 		controller.HandleErrorInternalServerError(ctx, err)
@@ -220,7 +220,7 @@ func (c *ModelController[T]) Update(ctx iris.Context) {
 }
 
 // delete
-func (c *ModelController[T]) Delete(ctx iris.Context) {
+func (c *EntityController[T]) Delete(ctx iris.Context) {
 	idValue := ctx.Params().Get("id")
 	if len(idValue) <= 0 {
 		controller.HandleErrorBadRequest(ctx, errors.New("id must not be empty"))
@@ -231,7 +231,7 @@ func (c *ModelController[T]) Delete(ctx iris.Context) {
 		controller.HandleErrorBadRequest(ctx, fmt.Errorf("invalid id format,err:%s", err.Error()))
 		return
 	}
-	service := c.getEntityService()
+	service := c.GetEntityService()
 	item, err := service.FindById(oid)
 	if err != nil {
 		controller.HandleErrorInternalServerError(ctx, err)
@@ -247,7 +247,7 @@ func (c *ModelController[T]) Delete(ctx iris.Context) {
 		return
 	}
 
-	err = c.getEntityService().Delete(oid)
+	err = c.GetEntityService().Delete(oid)
 	if err != nil {
 		controller.HandleErrorInternalServerError(ctx, err)
 		return
@@ -256,7 +256,7 @@ func (c *ModelController[T]) Delete(ctx iris.Context) {
 }
 
 // delete
-func (c *ModelController[T]) DeleteList(ctx iris.Context) {
+func (c *EntityController[T]) DeleteList(ctx iris.Context) {
 	payload, err := GetBatchRequestPayload(ctx)
 	if err != nil {
 		controller.HandleErrorBadRequest(ctx, err)
@@ -272,7 +272,7 @@ func (c *ModelController[T]) DeleteList(ctx iris.Context) {
 	// auto filter current userId
 	AddUserIdFilterIfNeed(filter, new(T), ctx)
 
-	_, err = c.getEntityService().DeleteMany(filter)
+	_, err = c.GetEntityService().DeleteMany(filter)
 	if err != nil {
 		controller.HandleErrorInternalServerError(ctx, err)
 		return
@@ -280,7 +280,7 @@ func (c *ModelController[T]) DeleteList(ctx iris.Context) {
 	controller.HandleSuccess(ctx)
 }
 
-func (c *ModelController[T]) setUserInfo(ctx iris.Context, entityValue interface{}) {
+func (c *EntityController[T]) SetUserInfo(ctx iris.Context, entityValue interface{}) {
 	userinfoProvider, ok := entityValue.(entity.IEntityWithUser)
 	if !ok {
 		return
