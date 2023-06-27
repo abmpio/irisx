@@ -1,4 +1,4 @@
-package controller
+package controllerx
 
 import (
 	"fmt"
@@ -25,7 +25,7 @@ func checkEntityIsIEntityWithUser(entityValue interface{}) entity.IEntityWithUse
 	return v
 }
 
-func addUserIdFilterIfNeed(filter map[string]interface{}, entity interface{}, ctx iris.Context) {
+func AddUserIdFilterIfNeed(filter map[string]interface{}, entity interface{}, ctx iris.Context) {
 	if checkEntityIsIEntityWithUser(entity) == nil {
 		return
 	}

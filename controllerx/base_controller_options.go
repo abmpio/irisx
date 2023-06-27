@@ -1,4 +1,4 @@
-package controller
+package controllerx
 
 type BaseControllerOptions struct {
 	AuthenticatedDisabled bool

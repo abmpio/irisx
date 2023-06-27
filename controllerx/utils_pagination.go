@@ -1,4 +1,4 @@
-package controller
+package controllerx
 
 import (
 	"abmp.cc/appserver/pkg/entity"

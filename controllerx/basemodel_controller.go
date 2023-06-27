@@ -1,4 +1,4 @@
-package controller
+package controllerx
 
 import (
 	"errors"
@@ -67,7 +67,7 @@ func (c *ModelController[T]) getEntityService() entity.IEntityService[T] {
 		if c.EntityService != nil {
 			return
 		}
-		c.EntityService = getEntityService[T]()
+		c.EntityService = GetEntityService[T]()
 	})
 	return c.EntityService
 }
@@ -75,7 +75,7 @@ func (c *ModelController[T]) getEntityService() entity.IEntityService[T] {
 func (c *ModelController[T]) All(ctx iris.Context) {
 	filter := map[string]interface{}{}
 	// auto filter current userId
-	addUserIdFilterIfNeed(filter, new(T), ctx)
+	AddUserIdFilterIfNeed(filter, new(T), ctx)
 
 	var list []T
 	var err error
@@ -104,7 +104,7 @@ func (c *ModelController[T]) GetList(ctx iris.Context) {
 	sort := filter.MustGetSortOption(ctx.FormValue)
 
 	// auto filter current userId
-	addUserIdFilterIfNeed(query, new(T), ctx)
+	AddUserIdFilterIfNeed(query, new(T), ctx)
 	service := c.getEntityService()
 	list, err := service.FindList(query, mongodbr.FindOptionWithSort(sort),
 		mongodbr.FindOptionWithPage(int64(pagination.Page), int64(pagination.Size)))
@@ -270,7 +270,7 @@ func (c *ModelController[T]) DeleteList(ctx iris.Context) {
 		"_id": bson.M{"$in": payload.Ids},
 	}
 	// auto filter current userId
-	addUserIdFilterIfNeed(filter, new(T), ctx)
+	AddUserIdFilterIfNeed(filter, new(T), ctx)
 
 	_, err = c.getEntityService().DeleteMany(filter)
 	if err != nil {

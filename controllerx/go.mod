@@ -1,4 +1,4 @@
-module github.com/abmpio/irisx/controller
+module github.com/abmpio/irisx/controllerx
 
 go 1.20
 
