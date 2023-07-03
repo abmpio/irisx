@@ -22,42 +22,37 @@ type EntityController[T mongodbr.IEntity] struct {
 	RouterPath    string
 	EntityService entity.IEntityService[T]
 
-	options BaseEntityControllerOptions
+	Options BaseEntityControllerOptions
 	once    sync.Once
 }
 
 func (c *EntityController[T]) RegistRouter(webapp *webapp.Application, opts ...BaseEntityControllerOption) router.Party {
 	for _, eachOpt := range opts {
-		eachOpt(&(c.options))
+		eachOpt(&(c.Options))
 	}
 
-	handlerList := make([]context.Handler, 0)
-	if !c.options.AuthenticatedDisabled {
-		// handler auth
-		handlerList = append(handlerList, GetCasdoorMiddleware().Serve)
-	}
-	routerParty := webapp.Party(c.RouterPath, handlerList...)
+	routerParty := webapp.Party(c.RouterPath)
 
-	if !c.options.AllDisabled {
-		routerParty.Get("/all", c.All)
+	if !c.Options.AllDisabled {
+		routerParty.Get("/all", c.MergeAuthenticatedContextIfNeed(c.Options.AuthenticatedDisabled, c.All)...)
 	}
-	if !c.options.ListDisabled {
-		routerParty.Get("/", c.GetList)
+	if !c.Options.ListDisabled {
+		routerParty.Get("/", c.MergeAuthenticatedContextIfNeed(c.Options.AuthenticatedDisabled, c.GetList)...)
 	}
-	if !c.options.GetByIdDisabled {
-		routerParty.Get("/{id}", c.GetById)
+	if !c.Options.GetByIdDisabled {
+		routerParty.Get("/{id}", c.MergeAuthenticatedContextIfNeed(c.Options.AuthenticatedDisabled, c.GetById)...)
 	}
-	if !c.options.CreateDisabled {
-		routerParty.Post("/", c.Create)
+	if !c.Options.CreateDisabled {
+		routerParty.Post("/", c.MergeAuthenticatedContextIfNeed(c.Options.AuthenticatedDisabled, c.Create)...)
 	}
-	if !c.options.UpdateDisabled {
-		routerParty.Put("/{id}", c.Update)
+	if !c.Options.UpdateDisabled {
+		routerParty.Put("/{id}", c.MergeAuthenticatedContextIfNeed(c.Options.AuthenticatedDisabled, c.Update)...)
 	}
-	if !c.options.DeleteDisabled {
-		routerParty.Delete("/{id}", c.Delete)
+	if !c.Options.DeleteDisabled {
+		routerParty.Delete("/{id}", c.MergeAuthenticatedContextIfNeed(c.Options.AuthenticatedDisabled, c.Delete)...)
 	}
-	if !c.options.DeleteListDisabled {
-		routerParty.Delete("/", c.DeleteList)
+	if !c.Options.DeleteListDisabled {
+		routerParty.Delete("/", c.MergeAuthenticatedContextIfNeed(c.Options.AuthenticatedDisabled, c.DeleteList)...)
 	}
 
 	return routerParty
@@ -66,10 +61,8 @@ func (c *EntityController[T]) RegistRouter(webapp *webapp.Application, opts ...B
 func (c *EntityController[T]) MergeAuthenticatedContextIfNeed(authenticatedDisabled bool, handlers ...context.Handler) []context.Handler {
 	handlerList := make([]context.Handler, 0)
 	if !authenticatedDisabled {
-		if !c.options.AuthenticatedDisabled {
-			// handler auth
-			handlerList = append(handlerList, GetCasdoorMiddleware().Serve)
-		}
+		// handler auth
+		handlerList = append(handlerList, GetCasdoorMiddleware().Serve)
 	}
 	handlerList = append(handlerList, handlers...)
 	return handlerList
