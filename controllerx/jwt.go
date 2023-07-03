@@ -14,7 +14,7 @@ var (
 	_sync           sync.Once
 )
 
-func getCasdoorMiddleware() *casdoor.Middleware {
+func GetCasdoorMiddleware() *casdoor.Middleware {
 	_sync.Do(func() {
 		casdoorOpt := &optCasdoor.CasdoorOptions{}
 		configurationx.GetInstance().UnmarshalPropertiesTo(optCasdoor.ConfigurationKey, casdoorOpt)

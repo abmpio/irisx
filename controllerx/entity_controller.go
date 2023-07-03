@@ -30,10 +30,11 @@ func (c *EntityController[T]) RegistRouter(webapp *webapp.Application, opts ...B
 	for _, eachOpt := range opts {
 		eachOpt(&(c.options))
 	}
+
 	handlerList := make([]context.Handler, 0)
 	if !c.options.AuthenticatedDisabled {
 		// handler auth
-		handlerList = append(handlerList, getCasdoorMiddleware().Serve)
+		handlerList = append(handlerList, GetCasdoorMiddleware().Serve)
 	}
 	routerParty := webapp.Party(c.RouterPath, handlerList...)
 
@@ -60,6 +61,18 @@ func (c *EntityController[T]) RegistRouter(webapp *webapp.Application, opts ...B
 	}
 
 	return routerParty
+}
+
+func (c *EntityController[T]) MergeAuthenticatedContextIfNeed(authenticatedDisabled bool, handlers ...context.Handler) []context.Handler {
+	handlerList := make([]context.Handler, 0)
+	if !authenticatedDisabled {
+		if !c.options.AuthenticatedDisabled {
+			// handler auth
+			handlerList = append(handlerList, GetCasdoorMiddleware().Serve)
+		}
+	}
+	handlerList = append(handlerList, handlers...)
+	return handlerList
 }
 
 func (c *EntityController[T]) GetEntityService() entity.IEntityService[T] {

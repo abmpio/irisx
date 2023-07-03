@@ -10,7 +10,7 @@ import (
 )
 
 func GetUserId(ctx iris.Context) string {
-	claims := getCasdoorMiddleware().GetUserClaims(ctx)
+	claims := GetCasdoorMiddleware().GetUserClaims(ctx)
 	if claims != nil {
 		return claims.Id
 	}
