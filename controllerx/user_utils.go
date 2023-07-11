@@ -36,7 +36,7 @@ func AddUserIdFilterIfNeed(filter map[string]interface{}, entity interface{}, ct
 	filter["creatorId"] = currentUserId
 }
 
-func filterMustIsCurrentUserId(entity interface{}, ctx iris.Context) bool {
+func FilterMustIsCurrentUserId(entity interface{}, ctx iris.Context) bool {
 	entityWithUser := checkEntityIsIEntityWithUser(entity)
 	if entityWithUser == nil {
 		return true

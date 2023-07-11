@@ -150,7 +150,7 @@ func (c *EntityController[T]) GetById(ctx iris.Context) {
 		return
 	}
 	// filter user is current user
-	if !filterMustIsCurrentUserId(item, ctx) {
+	if !FilterMustIsCurrentUserId(item, ctx) {
 		controller.HandleErrorInternalServerError(ctx, fmt.Errorf("invalid id,id:%s", idValue))
 		return
 	}
@@ -205,7 +205,7 @@ func (c *EntityController[T]) Update(ctx iris.Context) {
 		return
 	}
 	// filter user is current user
-	if !filterMustIsCurrentUserId(item, ctx) {
+	if !FilterMustIsCurrentUserId(item, ctx) {
 		controller.HandleErrorInternalServerError(ctx, fmt.Errorf("invalid id,id:%s", idValue))
 		return
 	}
@@ -248,7 +248,7 @@ func (c *EntityController[T]) Delete(ctx iris.Context) {
 		return
 	}
 	// filter user is current user
-	if !filterMustIsCurrentUserId(item, ctx) {
+	if !FilterMustIsCurrentUserId(item, ctx) {
 		controller.HandleErrorInternalServerError(ctx, fmt.Errorf("invalid id,id:%s", idValue))
 		return
 	}
