@@ -10,7 +10,7 @@ require (
 	github.com/abmpio/configurationx v0.0.0-20230614115922-7e2f5818b58d
 	github.com/abmpio/entity v0.0.0-00010101000000-000000000000
 	github.com/abmpio/irisx/casdoor v0.0.0-00010101000000-000000000000
-	github.com/abmpio/mongodbr v0.0.0-20230611075214-8c9508eae6a4
+	github.com/abmpio/mongodbr v0.0.0-20230712120200-57fb87dee66d
 	github.com/kataras/iris/v12 v12.2.0
 	go.mongodb.org/mongo-driver v1.11.3
 )

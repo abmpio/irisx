@@ -26,6 +26,9 @@ func checkEntityIsIEntityWithUser(entityValue interface{}) entity.IEntityWithUse
 }
 
 func AddUserIdFilterIfNeed(filter map[string]interface{}, entity interface{}, ctx iris.Context) {
+	if filter == nil {
+		return
+	}
 	if checkEntityIsIEntityWithUser(entity) == nil {
 		return
 	}
