@@ -3,8 +3,8 @@ package controllerx
 import (
 	"fmt"
 
-	"abmp.cc/abmp/pkg/log"
-	"abmp.cc/abmp/pkg/utils/reflector"
+	"github.com/abmpio/abmp/pkg/log"
+	"github.com/abmpio/abmp/pkg/utils/reflector"
 	"github.com/abmpio/entity"
 	"github.com/kataras/iris/v12"
 )

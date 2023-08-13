@@ -1,7 +1,7 @@
 package controllerx
 
 import (
-	"abmp.cc/appserver/pkg/entity"
+	"github.com/abmpio/entity"
 	"github.com/kataras/iris/v12"
 )
 

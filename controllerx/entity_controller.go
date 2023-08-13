@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"sync"
 
-	"abmp.cc/appserver/pkg/entity/filter"
-	"abmp.cc/webserver/controller"
+	"github.com/abmpio/abmp/webserver/controller"
 	"github.com/abmpio/entity"
+	"github.com/abmpio/entity/filter"
 	"github.com/abmpio/mongodbr"
 	"github.com/kataras/iris/v12"
 	"github.com/kataras/iris/v12/context"
@@ -15,7 +15,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 
-	webapp "abmp.cc/webserver/app"
+	webapp "github.com/abmpio/abmp/webserver/app"
 )
 
 type EntityController[T mongodbr.IEntity] struct {
