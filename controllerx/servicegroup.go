@@ -1,7 +1,7 @@
 package controllerx
 
 import (
-	"github.com/abmpio/abmp/app"
+	"github.com/abmpio/app"
 	"github.com/abmpio/entity"
 	"github.com/abmpio/mongodbr"
 )
