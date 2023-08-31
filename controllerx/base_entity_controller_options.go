@@ -18,6 +18,18 @@ type BaseEntityControllerOptions struct {
 
 type BaseEntityControllerOption func(*BaseEntityControllerOptions)
 
+func BaseEntityControllerWithAllEndpointDisabled(v bool) BaseEntityControllerOption {
+	return func(rro *BaseEntityControllerOptions) {
+		rro.AllDisabled = v
+		rro.ListDisabled = v
+		rro.GetByIdDisabled = v
+		rro.CreateDisabled = v
+		rro.UpdateDisabled = v
+		rro.DeleteDisabled = v
+		rro.DeleteListDisabled = v
+	}
+}
+
 func BaseEntityControllerWithAllDisabled(v bool) BaseEntityControllerOption {
 	return func(rro *BaseEntityControllerOptions) {
 		rro.AllDisabled = v
