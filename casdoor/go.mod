@@ -1,6 +1,8 @@
 module github.com/abmpio/irisx/casdoor
 
-go 1.20
+go 1.21
+
+toolchain go1.21.0
 
 require (
 	github.com/abmpio/configurationx v0.0.0-20230713072959-39c660b4f462
