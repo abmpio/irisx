@@ -5,13 +5,13 @@ go 1.21
 toolchain go1.21.0
 
 require (
-	github.com/abmpio/abmp v0.0.0-00010101000000-000000000000
-	github.com/abmpio/app v0.0.0-00010101000000-000000000000
+	github.com/abmpio/abmp v0.0.0-20230819060034-aa8d5ad8e394
+	github.com/abmpio/app v0.0.0-20231107113850-3cb7968b906e
 	github.com/abmpio/configurationx v0.0.0-20230713072959-39c660b4f462
-	github.com/abmpio/entity v0.0.0-00010101000000-000000000000
+	github.com/abmpio/entity v0.0.0-20231108040815-d1a5b013afa0
 	github.com/abmpio/irisx/casdoor v0.0.0-00010101000000-000000000000
 	github.com/abmpio/mongodbr v0.0.0-20230713130758-03f7f55fbe15
-	github.com/abmpio/webserver v0.0.0-00010101000000-000000000000
+	github.com/abmpio/webserver v0.0.0-20231107125712-d0161ed27d1e
 	github.com/kataras/iris/v12 v12.2.4
 	go.mongodb.org/mongo-driver v1.12.1
 )
@@ -95,12 +95,4 @@ require (
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
 
-replace (
-	github.com/abmpio/abmp => ../../abmp.core
-	github.com/abmpio/app => ../../app/app
-	github.com/abmpio/configurationx => ../../configurationx
-	github.com/abmpio/entity => ./../../entity
-	github.com/abmpio/irisx/casdoor => ./../../irisx/casdoor
-	github.com/abmpio/mongodbr => ./../../mongodbr
-	github.com/abmpio/webserver => ../../app/webserver
-)
+replace github.com/abmpio/irisx/casdoor => ./../casdoor
