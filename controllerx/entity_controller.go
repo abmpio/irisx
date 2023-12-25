@@ -80,8 +80,10 @@ func (c *EntityController[T]) GetEntityService() entity.IEntityService[T] {
 
 func (c *EntityController[T]) All(ctx iris.Context) {
 	filter := map[string]interface{}{}
-	// auto filter current userId
-	AddUserIdFilterIfNeed(filter, new(T), ctx)
+	if !c.Options.FilterCurrentUserForListDisabled {
+		// auto filter current userId
+		AddUserIdFilterIfNeed(filter, new(T), ctx)
+	}
 
 	var list []T
 	var err error
@@ -109,8 +111,10 @@ func (c *EntityController[T]) GetList(ctx iris.Context) {
 	query := filter.MustGetFilterQuery(ctx.FormValue)
 	sort := filter.MustGetSortOption(ctx.FormValue)
 
-	// auto filter current userId
-	AddUserIdFilterIfNeed(query, new(T), ctx)
+	if !c.Options.FilterCurrentUserForListDisabled {
+		// auto filter current userId
+		AddUserIdFilterIfNeed(query, new(T), ctx)
+	}
 	service := c.GetEntityService()
 	list, err := service.FindList(query, mongodbr.FindOptionWithSort(sort),
 		mongodbr.FindOptionWithPage(int64(pagination.Page), int64(pagination.Size)))
@@ -149,11 +153,11 @@ func (c *EntityController[T]) GetById(ctx iris.Context) {
 		controller.HandleErrorInternalServerError(ctx, fmt.Errorf("invalid id,id:%s", idValue))
 		return
 	}
-	// filter user is current user
-	if !FilterMustIsCurrentUserId(item, ctx) {
-		controller.HandleErrorInternalServerError(ctx, fmt.Errorf("invalid id,id:%s", idValue))
-		return
-	}
+	// // filter user is current user
+	// if !FilterMustIsCurrentUserId(item, ctx) {
+	// 	controller.HandleErrorInternalServerError(ctx, fmt.Errorf("invalid id,id:%s", idValue))
+	// 	return
+	// }
 	controller.HandleSuccessWithData(ctx, item)
 }
 
@@ -276,7 +280,7 @@ func (c *EntityController[T]) DeleteList(ctx iris.Context) {
 		"_id": bson.M{"$in": payload.Ids},
 	}
 	// auto filter current userId
-	AddUserIdFilterIfNeed(filter, new(T), ctx)
+	// AddUserIdFilterIfNeed(filter, new(T), ctx)
 
 	_, err = c.GetEntityService().DeleteMany(filter)
 	if err != nil {

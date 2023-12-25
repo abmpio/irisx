@@ -13,6 +13,8 @@ type BaseEntityControllerOptions struct {
 	DeleteDisabled     bool
 	DeleteListDisabled bool
 
+	FilterCurrentUserForListDisabled bool
+
 	BaseControllerOptions
 }
 
