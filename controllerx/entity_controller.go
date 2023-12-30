@@ -209,10 +209,10 @@ func (c *EntityController[T]) Update(ctx iris.Context) {
 		return
 	}
 	// filter user is current user
-	if !FilterMustIsCurrentUserId(item, ctx) {
-		controller.HandleErrorInternalServerError(ctx, fmt.Errorf("invalid id,id:%s", idValue))
-		return
-	}
+	// if !FilterMustIsCurrentUserId(item, ctx) {
+	// 	controller.HandleErrorInternalServerError(ctx, fmt.Errorf("invalid id,id:%s", idValue))
+	// 	return
+	// }
 
 	input := make(map[string]interface{})
 	err = ctx.ReadJSON(&input)
@@ -252,10 +252,10 @@ func (c *EntityController[T]) Delete(ctx iris.Context) {
 		return
 	}
 	// filter user is current user
-	if !FilterMustIsCurrentUserId(item, ctx) {
-		controller.HandleErrorInternalServerError(ctx, fmt.Errorf("invalid id,id:%s", idValue))
-		return
-	}
+	// if !FilterMustIsCurrentUserId(item, ctx) {
+	// 	controller.HandleErrorInternalServerError(ctx, fmt.Errorf("invalid id,id:%s", idValue))
+	// 	return
+	// }
 
 	err = c.GetEntityService().Delete(oid)
 	if err != nil {
