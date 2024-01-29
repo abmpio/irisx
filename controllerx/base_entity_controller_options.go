@@ -1,5 +1,7 @@
 package controllerx
 
+import "github.com/kataras/iris/v12"
+
 type BaseControllerOptions struct {
 	AuthenticatedDisabled bool
 }
@@ -13,6 +15,7 @@ type BaseEntityControllerOptions struct {
 	DeleteDisabled     bool
 	DeleteListDisabled bool
 
+	ListFilterFunc                   func(entityType interface{}, filter map[string]interface{}, ctx iris.Context)
 	FilterCurrentUserForListDisabled bool
 
 	BaseControllerOptions

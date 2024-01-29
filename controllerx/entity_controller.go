@@ -85,6 +85,9 @@ func (c *EntityController[T]) All(ctx iris.Context) {
 		AddUserIdFilterIfNeed(filter, new(T), ctx)
 	}
 
+	if c.Options.ListFilterFunc != nil {
+		c.Options.ListFilterFunc(new(T), filter, ctx)
+	}
 	var list []T
 	var err error
 	if len(filter) > 0 {
