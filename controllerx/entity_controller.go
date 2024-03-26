@@ -59,13 +59,7 @@ func (c *EntityController[T]) RegistRouter(webapp *webapp.Application, opts ...B
 }
 
 func (c *EntityController[T]) MergeAuthenticatedContextIfNeed(authenticatedDisabled bool, handlers ...context.Handler) []context.Handler {
-	handlerList := make([]context.Handler, 0)
-	if !authenticatedDisabled {
-		// handler auth
-		handlerList = append(handlerList, GetCasdoorMiddleware().Serve)
-	}
-	handlerList = append(handlerList, handlers...)
-	return handlerList
+	return MergeAuthenticatedContextIfNeed(authenticatedDisabled, handlers...)
 }
 
 func (c *EntityController[T]) GetEntityService() entity.IEntityService[T] {
