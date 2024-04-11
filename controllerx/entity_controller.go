@@ -39,6 +39,9 @@ func (c *EntityController[T]) RegistRouter(webapp *webapp.Application, opts ...B
 	if !c.Options.ListDisabled {
 		routerParty.Get("/", c.MergeAuthenticatedContextIfNeed(c.Options.AuthenticatedDisabled, c.GetList)...)
 	}
+	if !c.Options.SearchDiabled {
+		routerParty.Post("/search", c.MergeAuthenticatedContextIfNeed(c.Options.AuthenticatedDisabled, c.Search)...)
+	}
 	if !c.Options.GetByIdDisabled {
 		routerParty.Get("/{id}", c.MergeAuthenticatedContextIfNeed(c.Options.AuthenticatedDisabled, c.GetById)...)
 	}
@@ -126,6 +129,41 @@ func (c *EntityController[T]) GetList(ctx iris.Context) {
 		return
 	}
 	controller.HandleSuccessWithListData(ctx, list, count)
+}
+
+type searchInput struct {
+	controller.Pagination
+	Filter map[string]interface{} `json:",inline"`
+}
+
+func (c *EntityController[T]) Search(ctx iris.Context) {
+	input := &searchInput{}
+	err := ctx.ReadJSON(input)
+	if err != nil {
+		controller.HandleErrorBadRequest(ctx, err)
+		return
+	}
+	err = mongodbr.Validate(input)
+	if err != nil {
+		controller.HandleErrorBadRequest(ctx, err)
+		return
+	}
+
+	service := c.GetEntityService()
+	list, err := service.FindList(input.Filter, mongodbr.FindOptionWithPage(int64(input.CurrentPage), int64(input.PageSize)))
+	if err != nil {
+		controller.HandleErrorInternalServerError(ctx, err)
+		return
+	}
+
+	count, err := service.Count(input.Filter)
+	if err != nil {
+		controller.HandleErrorInternalServerError(ctx, err)
+		return
+	}
+	controller.HandleSuccessWithTableData(ctx, list, count,
+		controller.TableDataWithCurrentPage(input.CurrentPage),
+		controller.TableDataWithPageSize(input.PageSize))
 }
 
 // get by id

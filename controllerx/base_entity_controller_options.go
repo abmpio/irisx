@@ -9,6 +9,7 @@ type BaseControllerOptions struct {
 type BaseEntityControllerOptions struct {
 	AllDisabled        bool
 	ListDisabled       bool
+	SearchDiabled      bool
 	GetByIdDisabled    bool
 	CreateDisabled     bool
 	UpdateDisabled     bool
@@ -27,6 +28,7 @@ func BaseEntityControllerWithAllEndpointDisabled(v bool) BaseEntityControllerOpt
 	return func(rro *BaseEntityControllerOptions) {
 		rro.AllDisabled = v
 		rro.ListDisabled = v
+		rro.SearchDiabled = v
 		rro.GetByIdDisabled = v
 		rro.CreateDisabled = v
 		rro.UpdateDisabled = v
@@ -44,6 +46,12 @@ func BaseEntityControllerWithAllDisabled(v bool) BaseEntityControllerOption {
 func BaseEntityControllerWithListDisabled(v bool) BaseEntityControllerOption {
 	return func(rro *BaseEntityControllerOptions) {
 		rro.ListDisabled = v
+	}
+}
+
+func BaseEntityControllerWithSearchDisabled(v bool) BaseEntityControllerOption {
+	return func(rro *BaseEntityControllerOptions) {
+		rro.SearchDiabled = v
 	}
 }
 
