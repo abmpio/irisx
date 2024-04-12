@@ -131,13 +131,13 @@ func (c *EntityController[T]) GetList(ctx iris.Context) {
 	controller.HandleSuccessWithListData(ctx, list, count)
 }
 
-type searchInput struct {
+type SearchInput struct {
 	controller.Pagination
 	Filter map[string]interface{} `json:",inline"`
 }
 
 func (c *EntityController[T]) Search(ctx iris.Context) {
-	input := &searchInput{}
+	input := &SearchInput{}
 	err := ctx.ReadJSON(input)
 	if err != nil {
 		controller.HandleErrorBadRequest(ctx, err)
