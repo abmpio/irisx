@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"strings"
 
+	"github.com/abmpio/abmp/pkg/log"
 	"github.com/abmpio/configurationx/options/casdoor"
 	"github.com/casdoor/casdoor-go-sdk/casdoorsdk"
 	"github.com/kataras/iris/v12"
@@ -136,15 +137,15 @@ func FromFirst(extractors ...TokenExtractor) TokenExtractor {
 	}
 }
 
-func logf(ctx iris.Context, format string, args ...interface{}) {
-	ctx.Application().Logger().Debugf(format, args...)
-}
-
 var (
 	// ErrTokenMissing is the error value that it's returned when
 	// a token is not found based on the token extractor.
 	ErrTokenMissing = errors.New("required authorization token not found")
 )
+
+func logf(ctx iris.Context, format string, args ...interface{}) {
+	ctx.Application().Logger().Debugf(format, args...)
+}
 
 // Get returns the user (&token) information for this client/request
 func (m *Middleware) Get(ctx iris.Context) *casdoorsdk.Claims {
@@ -171,7 +172,7 @@ func (m *Middleware) CheckJWT(ctx iris.Context) error {
 	token, err := m.Options.Extractor(ctx)
 	// If debugging is turned on, log the outcome
 	if err != nil {
-		logf(ctx, "Error extracting JWT: %v", err)
+		log.Logger.Warn(fmt.Sprintf("Error extracting JWT: %v", err))
 		return err
 	}
 
@@ -181,13 +182,13 @@ func (m *Middleware) CheckJWT(ctx iris.Context) error {
 	if token == "" {
 		// Check if it was required
 		if m.Options.Jwt.CredentialsOptional {
-			logf(ctx, "No credentials found (CredentialsOptional=true)")
+			log.Logger.Debug("No credentials found (CredentialsOptional=true)")
 			// No error, just no token (and that is ok given that CredentialsOptional is true)
 			return nil
 		}
 
 		// If we get here, the required token is missing
-		logf(ctx, "Error: No credentials found (CredentialsOptional=false)")
+		log.Logger.Warn("Error: No credentials found (CredentialsOptional=false)")
 		return ErrTokenMissing
 	}
 
@@ -196,7 +197,7 @@ func (m *Middleware) CheckJWT(ctx iris.Context) error {
 	claim, err := casdoorsdk.ParseJwtToken(token)
 	// Check if there was an error in parsing...
 	if err != nil {
-		logf(ctx, "Error parsing token: %v", err)
+		log.Logger.Warn(fmt.Sprintf("Error parsing token: %v", err))
 		return err
 	}
 
