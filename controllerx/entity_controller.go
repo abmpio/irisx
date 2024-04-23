@@ -112,6 +112,9 @@ func (c *EntityController[T]) GetList(ctx iris.Context) {
 	sort := filter.MustGetSortOption(ctx.FormValue)
 
 	if !c.Options.FilterCurrentUserForListDisabled {
+		if query == nil {
+			query = bson.M{}
+		}
 		// auto filter current userId
 		AddUserIdFilterIfNeed(query, new(T), ctx)
 	}
@@ -147,6 +150,14 @@ func (c *EntityController[T]) Search(ctx iris.Context) {
 	if err != nil {
 		controller.HandleErrorBadRequest(ctx, err)
 		return
+	}
+
+	if !c.Options.FilterCurrentUserForListDisabled {
+		// auto filter current userId
+		if input.Filter == nil {
+			input.Filter = bson.M{}
+		}
+		AddUserIdFilterIfNeed(input.Filter, new(T), ctx)
 	}
 
 	service := c.GetEntityService()
@@ -188,11 +199,11 @@ func (c *EntityController[T]) GetById(ctx iris.Context) {
 		controller.HandleErrorInternalServerError(ctx, fmt.Errorf("invalid id,id:%s", idValue))
 		return
 	}
-	// // filter user is current user
-	// if !FilterMustIsCurrentUserId(item, ctx) {
-	// 	controller.HandleErrorInternalServerError(ctx, fmt.Errorf("invalid id,id:%s", idValue))
-	// 	return
-	// }
+	// filter user is current user
+	if !c.Options.FilterCurrentUserForListDisabled && !FilterMustIsCurrentUserId(item, ctx) {
+		controller.HandleErrorInternalServerError(ctx, fmt.Errorf("invalid id,id:%s", idValue))
+		return
+	}
 	controller.HandleSuccessWithData(ctx, item)
 }
 
@@ -244,10 +255,10 @@ func (c *EntityController[T]) Update(ctx iris.Context) {
 		return
 	}
 	// filter user is current user
-	// if !FilterMustIsCurrentUserId(item, ctx) {
-	// 	controller.HandleErrorInternalServerError(ctx, fmt.Errorf("invalid id,id:%s", idValue))
-	// 	return
-	// }
+	if !c.Options.FilterCurrentUserForListDisabled && !FilterMustIsCurrentUserId(item, ctx) {
+		controller.HandleErrorInternalServerError(ctx, fmt.Errorf("invalid id,id:%s", idValue))
+		return
+	}
 
 	input := make(map[string]interface{})
 	err = ctx.ReadJSON(&input)
@@ -287,10 +298,10 @@ func (c *EntityController[T]) Delete(ctx iris.Context) {
 		return
 	}
 	// filter user is current user
-	// if !FilterMustIsCurrentUserId(item, ctx) {
-	// 	controller.HandleErrorInternalServerError(ctx, fmt.Errorf("invalid id,id:%s", idValue))
-	// 	return
-	// }
+	if !c.Options.FilterCurrentUserForListDisabled && !FilterMustIsCurrentUserId(item, ctx) {
+		controller.HandleErrorInternalServerError(ctx, fmt.Errorf("invalid id,id:%s", idValue))
+		return
+	}
 
 	err = c.GetEntityService().Delete(oid)
 	if err != nil {
@@ -315,7 +326,10 @@ func (c *EntityController[T]) DeleteList(ctx iris.Context) {
 		"_id": bson.M{"$in": payload.Ids},
 	}
 	// auto filter current userId
-	// AddUserIdFilterIfNeed(filter, new(T), ctx)
+	if !c.Options.FilterCurrentUserForListDisabled {
+		// auto filter current userId
+		AddUserIdFilterIfNeed(filter, new(T), ctx)
+	}
 
 	_, err = c.GetEntityService().DeleteMany(filter)
 	if err != nil {
