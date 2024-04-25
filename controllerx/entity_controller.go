@@ -137,6 +137,12 @@ func (c *EntityController[T]) GetList(ctx iris.Context) {
 type SearchInput struct {
 	controller.Pagination
 	Filter map[string]interface{} `json:",inline"`
+
+	SortInput
+}
+
+type SortInput struct {
+	Sorts []entity.Sort `json:"sorts"`
 }
 
 func (c *EntityController[T]) Search(ctx iris.Context) {
@@ -160,8 +166,11 @@ func (c *EntityController[T]) Search(ctx iris.Context) {
 		AddUserIdFilterIfNeed(input.Filter, new(T), ctx)
 	}
 
+	findOptions := make([]mongodbr.FindOption, 0)
+	findOptions = append(findOptions, mongodbr.FindOptionWithPage(int64(input.CurrentPage), int64(input.PageSize)))
+	findOptions = append(findOptions, SetupFindOptionsWithSort(input.SortInput)...)
 	service := c.GetEntityService()
-	list, err := service.FindList(input.Filter, mongodbr.FindOptionWithPage(int64(input.CurrentPage), int64(input.PageSize)))
+	list, err := service.FindList(input.Filter, findOptions...)
 	if err != nil {
 		controller.HandleErrorInternalServerError(ctx, err)
 		return
@@ -348,4 +357,28 @@ func (c *EntityController[T]) SetUserInfo(ctx iris.Context, entityValue interfac
 	if userId != "" {
 		userinfoProvider.SetUserCreator(userId)
 	}
+}
+
+func SetupFindOptionsWithSort(i SortInput) []mongodbr.FindOption {
+	opts := make([]mongodbr.FindOption, 0)
+	if len(i.Sorts) <= 0 {
+		return opts
+	}
+
+	for _, eachSort := range i.Sorts {
+		if len(eachSort.Key) <= 0 || len(eachSort.Direction) <= 0 {
+			continue
+		}
+		var isAsc bool
+		if eachSort.Direction == entity.ASCENDING {
+			isAsc = true
+		} else if eachSort.Direction == entity.DESCENDING {
+			isAsc = false
+		} else {
+			// invalid direction
+			continue
+		}
+		opts = append(opts, mongodbr.FindOptionWithFieldSort(eachSort.Key, isAsc))
+	}
+	return opts
 }
