@@ -53,12 +53,8 @@ github.com/abmpio/app v0.0.0-20240404071119-03df977de39a h1:wJbn5bR5tzT19PqS7EN3
 github.com/abmpio/app v0.0.0-20240404071119-03df977de39a/go.mod h1:PNyPZdHRaY5kPCS3ZxGOk1+bQj/5BWeDE9t6aI0Oxqs=
 github.com/abmpio/configurationx v0.0.0-20230713072959-39c660b4f462 h1:5zt2uu46DolnJoMuXXNprSA7qA+4b8lxZghxJIPAcIA=
 github.com/abmpio/configurationx v0.0.0-20230713072959-39c660b4f462/go.mod h1:+dKpgI9DK0dmz83PFE2sKDIbflkKS8o8dQkgnCX3orU=
-github.com/abmpio/entity v0.0.0-20240327143340-76821b0c63be h1:/xWsyBxUXanrGH12Do3KfsvhusPyxciHOPNNCpQoUUk=
-github.com/abmpio/entity v0.0.0-20240327143340-76821b0c63be/go.mod h1:5VQEbUCS2j5K07prTg4JQqjDlUljPLU6BOaDInFjuws=
 github.com/abmpio/entity v0.0.0-20240425073837-e28d88fba261 h1:WBZBSh9iEW0ywNfRbr4OTRH67jjEU6OyfLlL9kOUR+I=
 github.com/abmpio/entity v0.0.0-20240425073837-e28d88fba261/go.mod h1:QOQXHk31L5PzhVKZbhCA8/MenSb6YETjMNz2gIGFCrU=
-github.com/abmpio/libx v0.0.0-20240320093946-7917c02442c2 h1:NFgCgTcjY1DgPXYOWbUIMp6ldN0Nna+wNvNSLgwkw1Q=
-github.com/abmpio/libx v0.0.0-20240320093946-7917c02442c2/go.mod h1:1FdlmnwDWa2mTehDyH2JgEozqZv2uTys6LM+PmYRCZg=
 github.com/abmpio/libx v0.0.0-20240422123003-5986afc11094 h1:1bTdEI/7EesLel8/zM7qvWSov00fpBo44AqLPkH6kGo=
 github.com/abmpio/libx v0.0.0-20240422123003-5986afc11094/go.mod h1:1FdlmnwDWa2mTehDyH2JgEozqZv2uTys6LM+PmYRCZg=
 github.com/abmpio/mongodbr v0.0.0-20240425065527-2bbb4b2ecc76 h1:rNMB1P+/aNCtCE0E5neBeNe5M9NBirHWOrHXVqwED+E=
@@ -197,8 +193,6 @@ github.com/jstemmer/go-junit-report v0.0.0-20190106144839-af01ea7f8024/go.mod h1
 github.com/jstemmer/go-junit-report v0.9.1/go.mod h1:Brl9GWCQeLvo8nXZwPNNblvFj/XSXhF0NWZEnDohbsk=
 github.com/kataras/blocks v0.0.7 h1:cF3RDY/vxnSRezc7vLFlQFTYXG/yAr1o7WImJuZbzC4=
 github.com/kataras/blocks v0.0.7/go.mod h1:UJIU97CluDo0f+zEjbnbkeMRlvYORtmc1304EeyXf4I=
-github.com/kataras/golog v0.1.11 h1:dGkcCVsIpqiAMWTlebn/ZULHxFvfG4K43LF1cNWSh20=
-github.com/kataras/golog v0.1.11/go.mod h1:mAkt1vbPowFUuUGvexyQ5NFW6djEgGyxQBIARJ0AH4A=
 github.com/kataras/golog v0.1.12 h1:Bu7I/G4ilJlbfzjmU39O9N+2uO1pBcMK045fzZ4ytNg=
 github.com/kataras/golog v0.1.12/go.mod h1:wrGSbOiBqbQSQznleVNX4epWM8rl9SJ/rmEacl0yqy4=
 github.com/kataras/iris/v12 v12.2.4 h1:fj5y2usjhnzTPrPsL/94wGaCcirvR/EdshgQgx2lBCo=
@@ -369,8 +363,6 @@ golang.org/x/exp v0.0.0-20191227195350-da58074b4299/go.mod h1:2RIsYlXP63K8oxa1u0
 golang.org/x/exp v0.0.0-20200119233911-0405dc783f0a/go.mod h1:2RIsYlXP63K8oxa1u096TMicItID8zy7Y6sNkU49FU4=
 golang.org/x/exp v0.0.0-20200207192155-f17229e696bd/go.mod h1:J/WKrq2StrnmMY6+EHIKF9dgMWnmCNThgcyBT1FY9mM=
 golang.org/x/exp v0.0.0-20200224162631-6cc2880d07d6/go.mod h1:3jZMyOhIsHpP37uCMkUooju7aAi5cS1Q23tOzKc+0MU=
-golang.org/x/exp v0.0.0-20240409090435-93d18d7e34b8 h1:ESSUROHIBHg7USnszlcdmjBEwdMj9VUvU+OPk4yl2mc=
-golang.org/x/exp v0.0.0-20240409090435-93d18d7e34b8/go.mod h1:/lliqkxwWAhPjf5oSOIJup2XcqJaw8RGS6k3TGEc7GI=
 golang.org/x/exp v0.0.0-20240416160154-fe59bbe5cc7f h1:99ci1mjWVBWwJiEKYY6jWa4d2nTQVIEhZIptnrVb1XY=
 golang.org/x/exp v0.0.0-20240416160154-fe59bbe5cc7f/go.mod h1:/lliqkxwWAhPjf5oSOIJup2XcqJaw8RGS6k3TGEc7GI=
 golang.org/x/image v0.0.0-20190227222117-0694c2d4d067/go.mod h1:kZ7UVZpmo3dzQBMxlp+ypCbDeSB+sBbTgSJuh5dn5js=

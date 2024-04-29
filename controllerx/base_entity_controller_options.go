@@ -16,8 +16,9 @@ type BaseEntityControllerOptions struct {
 	DeleteDisabled     bool
 	DeleteListDisabled bool
 
-	ListFilterFunc                   func(entityType interface{}, filter map[string]interface{}, ctx iris.Context)
-	FilterCurrentUserForListDisabled bool
+	ListFilterFunc func(entityType interface{}, filter map[string]interface{}, ctx iris.Context)
+	// filter for current login user
+	EnableFilterCurrentUser bool
 
 	BaseControllerOptions
 }
