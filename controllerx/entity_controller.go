@@ -141,6 +141,14 @@ type SearchInput struct {
 	SortInput
 }
 
+func (i *SearchInput) GetFilterValueAsString(key string) string {
+	v, ok := i.Filter[key].(string)
+	if ok {
+		return v
+	}
+	return ""
+}
+
 type SortInput struct {
 	Sorts []entity.Sort `json:"sorts"`
 }
