@@ -85,7 +85,7 @@ func (c *EntityController[T]) All(ctx iris.Context) {
 	if c.Options.ListFilterFunc != nil {
 		c.Options.ListFilterFunc(new(T), filter, ctx)
 	}
-	var list []T
+	var list []*T
 	var err error
 	if len(filter) > 0 {
 		list, err = c.GetEntityService().FindList(filter)

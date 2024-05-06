@@ -6,12 +6,12 @@ toolchain go1.22.2
 
 require (
 	github.com/abmpio/abmp v0.0.0-20240327133337-07f182a4ec7d
-	github.com/abmpio/app v0.0.0-20240404071119-03df977de39a
+	github.com/abmpio/app v0.0.0-20240504061123-d80bf9425633
 	github.com/abmpio/configurationx v0.0.0-20230713072959-39c660b4f462
-	github.com/abmpio/entity v0.0.0-20240425073837-e28d88fba261
+	github.com/abmpio/entity v0.0.0-20240506065701-4a1a793a1b55
 	github.com/abmpio/irisx/casdoor v0.0.0-20240326134538-6d07d9ae3c37
-	github.com/abmpio/mongodbr v0.0.0-20240425065527-2bbb4b2ecc76
-	github.com/abmpio/webserver v0.0.0-20240410071551-4433c32b4def
+	github.com/abmpio/mongodbr v0.0.0-20240506065045-242fabaa88a9
+	github.com/abmpio/webserver v0.0.0-20240505091255-0255c3aa441d
 	github.com/kataras/iris/v12 v12.2.4
 	go.mongodb.org/mongo-driver v1.15.0
 )
@@ -60,7 +60,7 @@ require (
 	github.com/microcosm-cc/bluemonday v1.0.26 // indirect
 	github.com/mitchellh/mapstructure v1.5.0 // indirect
 	github.com/montanaflynn/stats v0.7.1 // indirect
-	github.com/pelletier/go-toml/v2 v2.2.0 // indirect
+	github.com/pelletier/go-toml/v2 v2.2.2 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/russross/blackfriday/v2 v2.1.0 // indirect
 	github.com/sagikazarmark/locafero v0.4.0 // indirect
@@ -92,8 +92,8 @@ require (
 	golang.org/x/net v0.22.0 // indirect
 	golang.org/x/oauth2 v0.15.0 // indirect
 	golang.org/x/sync v0.7.0 // indirect
-	golang.org/x/sys v0.19.0 // indirect
-	golang.org/x/text v0.14.0 // indirect
+	golang.org/x/sys v0.20.0 // indirect
+	golang.org/x/text v0.15.0 // indirect
 	golang.org/x/time v0.5.0 // indirect
 	google.golang.org/appengine v1.6.7 // indirect
 	google.golang.org/protobuf v1.31.0 // indirect
