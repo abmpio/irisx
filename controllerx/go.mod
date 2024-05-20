@@ -6,12 +6,12 @@ toolchain go1.22.2
 
 require (
 	github.com/abmpio/abmp v0.0.0-20240327133337-07f182a4ec7d
-	github.com/abmpio/app v0.0.0-20240504061123-d80bf9425633
-	github.com/abmpio/configurationx v0.0.0-20230713072959-39c660b4f462
-	github.com/abmpio/entity v0.0.0-20240506065701-4a1a793a1b55
+	github.com/abmpio/app v0.0.0-20240520093814-c15230c5bf83
+	github.com/abmpio/configurationx v0.0.0-20240520083200-bcc6a8bb57fa
+	github.com/abmpio/entity v0.0.0-20240520101601-528a38682d39
 	github.com/abmpio/irisx/casdoor v0.0.0-20240326134538-6d07d9ae3c37
 	github.com/abmpio/mongodbr v0.0.0-20240506065045-242fabaa88a9
-	github.com/abmpio/webserver v0.0.0-20240505091255-0255c3aa441d
+	github.com/abmpio/webserver v0.0.0-20240520102725-84c88a784bd7
 	github.com/kataras/iris/v12 v12.2.4
 	go.mongodb.org/mongo-driver v1.15.0
 )
@@ -25,9 +25,11 @@ require (
 	github.com/Shopify/goreferrer v0.0.0-20220729165902-8cddb4f5de06 // indirect
 	github.com/abmpio/libx v0.0.0-20240422123003-5986afc11094 // indirect
 	github.com/andybalholm/brotli v1.0.5 // indirect
+	github.com/armon/go-metrics v0.4.1 // indirect
 	github.com/aymerick/douceur v0.2.0 // indirect
 	github.com/casdoor/casdoor-go-sdk v0.28.6 // indirect
 	github.com/deckarep/golang-set v1.8.0 // indirect
+	github.com/fatih/color v1.15.0 // indirect
 	github.com/fatih/structs v1.1.0 // indirect
 	github.com/flosch/pongo2/v4 v4.0.2 // indirect
 	github.com/fsnotify/fsnotify v1.7.0 // indirect
@@ -41,7 +43,15 @@ require (
 	github.com/gomarkdown/markdown v0.0.0-20230716120725-531d2d74bc12 // indirect
 	github.com/google/uuid v1.4.0 // indirect
 	github.com/gorilla/css v1.0.0 // indirect
+	github.com/hashicorp/consul/api v1.25.1 // indirect
+	github.com/hashicorp/go-cleanhttp v0.5.2 // indirect
+	github.com/hashicorp/go-hclog v1.5.0 // indirect
+	github.com/hashicorp/go-immutable-radix v1.3.1 // indirect
+	github.com/hashicorp/go-rootcerts v1.0.2 // indirect
+	github.com/hashicorp/golang-lru v1.0.2 // indirect
 	github.com/hashicorp/hcl v1.0.0 // indirect
+	github.com/hashicorp/serf v0.10.1 // indirect
+	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/iris-contrib/middleware/cors v0.0.0-20230817093337-c874b7c7eb8a // indirect
 	github.com/iris-contrib/schema v0.0.6 // indirect
 	github.com/josharian/intern v1.0.0 // indirect
@@ -57,7 +67,10 @@ require (
 	github.com/magiconair/properties v1.8.7 // indirect
 	github.com/mailgun/raymond/v2 v2.0.48 // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect
+	github.com/mattn/go-colorable v0.1.13 // indirect
+	github.com/mattn/go-isatty v0.0.19 // indirect
 	github.com/microcosm-cc/bluemonday v1.0.26 // indirect
+	github.com/mitchellh/go-homedir v1.1.0 // indirect
 	github.com/mitchellh/mapstructure v1.5.0 // indirect
 	github.com/montanaflynn/stats v0.7.1 // indirect
 	github.com/pelletier/go-toml/v2 v2.2.2 // indirect
@@ -71,6 +84,7 @@ require (
 	github.com/sourcegraph/conc v0.3.0 // indirect
 	github.com/spf13/afero v1.11.0 // indirect
 	github.com/spf13/cast v1.6.0 // indirect
+	github.com/spf13/cobra v1.7.0 // indirect
 	github.com/spf13/jwalterweatherman v1.1.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/spf13/viper v1.18.2 // indirect
@@ -87,8 +101,8 @@ require (
 	github.com/youmark/pkcs8 v0.0.0-20240424034433-3c2c7870ae76 // indirect
 	go.uber.org/multierr v1.11.0 // indirect
 	go.uber.org/zap v1.27.0 // indirect
-	golang.org/x/crypto v0.22.0 // indirect
-	golang.org/x/exp v0.0.0-20240416160154-fe59bbe5cc7f // indirect
+	golang.org/x/crypto v0.23.0 // indirect
+	golang.org/x/exp v0.0.0-20240506185415-9bf2ced13842 // indirect
 	golang.org/x/net v0.22.0 // indirect
 	golang.org/x/oauth2 v0.15.0 // indirect
 	golang.org/x/sync v0.7.0 // indirect
