@@ -50,8 +50,8 @@ github.com/Shopify/goreferrer v0.0.0-20220729165902-8cddb4f5de06 h1:KkH3I3sJuOLP
 github.com/Shopify/goreferrer v0.0.0-20220729165902-8cddb4f5de06/go.mod h1:7erjKLwalezA0k99cWs5L11HWOAPNjdUZ6RxH1BXbbM=
 github.com/abmpio/abmp v0.0.0-20240327133337-07f182a4ec7d h1:oGI/UY7YXQ3v7OjUN4n7eCJpJbmOknPo43yXbRWXq9g=
 github.com/abmpio/abmp v0.0.0-20240327133337-07f182a4ec7d/go.mod h1:bf/OopBYU2+AgOqiIky+xLh8ZzAk14PZg2rjaIRwjKY=
-github.com/abmpio/app v0.0.0-20240520093814-c15230c5bf83 h1:a4PV/vydpfgKl5xzo89hy2/F5m83J1PSYRXWjrBUzy8=
-github.com/abmpio/app v0.0.0-20240520093814-c15230c5bf83/go.mod h1:PNyPZdHRaY5kPCS3ZxGOk1+bQj/5BWeDE9t6aI0Oxqs=
+github.com/abmpio/app v0.0.0-20240520130037-6192508e1d2a h1:QqSP1qejrFk5zEpUV4qDwhBkY1WRdNKRpD6RxkHo544=
+github.com/abmpio/app v0.0.0-20240520130037-6192508e1d2a/go.mod h1:PNyPZdHRaY5kPCS3ZxGOk1+bQj/5BWeDE9t6aI0Oxqs=
 github.com/abmpio/configurationx v0.0.0-20240520083200-bcc6a8bb57fa h1:a+PVM0zKoSCgCoPb2VBsmh8s1qgis6BRUZyYUNgrClw=
 github.com/abmpio/configurationx v0.0.0-20240520083200-bcc6a8bb57fa/go.mod h1:+dKpgI9DK0dmz83PFE2sKDIbflkKS8o8dQkgnCX3orU=
 github.com/abmpio/entity v0.0.0-20240520101601-528a38682d39 h1:ab3zIY9vGUM2nECsaqhxA/0Adm9SnzRTajOrCkRJp6Y=
@@ -60,8 +60,8 @@ github.com/abmpio/libx v0.0.0-20240422123003-5986afc11094 h1:1bTdEI/7EesLel8/zM7
 github.com/abmpio/libx v0.0.0-20240422123003-5986afc11094/go.mod h1:1FdlmnwDWa2mTehDyH2JgEozqZv2uTys6LM+PmYRCZg=
 github.com/abmpio/mongodbr v0.0.0-20240506065045-242fabaa88a9 h1:wCbFtardyNTdwl78qNH5Kqmqd9y/8/JLlT13KOUqMRU=
 github.com/abmpio/mongodbr v0.0.0-20240506065045-242fabaa88a9/go.mod h1:BBOoqVKwv+xv3NG/IuZUPMOHuGKf3TkT0yMcbFvBfQI=
-github.com/abmpio/webserver v0.0.0-20240520102725-84c88a784bd7 h1:d5OWlDUsq+bL/qBUd/ogx3Ou4dLRGfVjyN+04Xi8XrA=
-github.com/abmpio/webserver v0.0.0-20240520102725-84c88a784bd7/go.mod h1:h0vYEBPSy0HpmT801I11NJZ1K4+i5BWL4CoxmuJqaVQ=
+github.com/abmpio/webserver v0.0.0-20240520131117-9c852c207275 h1:YCqIA7MeoIq4oI4EuuGY91vgiInCQVZd8aXv1oLFO5w=
+github.com/abmpio/webserver v0.0.0-20240520131117-9c852c207275/go.mod h1:DOh33w8lLeTla8TK6QixCgoGcCKeJ2mbjKNNzu4hps0=
 github.com/ajg/form v1.5.1 h1:t9c7v8JUKu/XxOGBU0yjNpaMloxGEJhUkqFRq0ibGeU=
 github.com/ajg/form v1.5.1/go.mod h1:uL1WgH+h2mgNtvBq0339dVnzXdBETtL2LeUXaIv25UY=
 github.com/alecthomas/template v0.0.0-20160405071501-a0175ee3bccc/go.mod h1:LOuyumcjzFXgccqObfd/Ljyb9UuFJ6TxHnclSeseNhc=
