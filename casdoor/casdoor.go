@@ -167,7 +167,11 @@ func (m *Middleware) Serve(ctx iris.Context) {
 }
 
 func (m *Middleware) CheckJWT(ctx iris.Context) error {
-
+	// is authenticated by other middleware?
+	user := m.GetUserClaims(ctx)
+	if user != nil {
+		return nil
+	}
 	// Use the specified token extractor to extract a token from the request
 	token, err := m.Options.Extractor(ctx)
 	// If debugging is turned on, log the outcome
