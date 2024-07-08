@@ -5,7 +5,7 @@ go 1.22
 toolchain go1.22.2
 
 require (
-	github.com/abmpio/abmp v0.0.0-20240327133337-07f182a4ec7d
+	github.com/abmpio/abmp v0.0.0-20240708094807-9bfd8036f0dc
 	github.com/abmpio/configurationx v0.0.0-20240520083200-bcc6a8bb57fa
 	github.com/casdoor/casdoor-go-sdk v0.28.6
 	github.com/kataras/iris/v12 v12.2.4
