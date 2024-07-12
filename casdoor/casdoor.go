@@ -210,6 +210,9 @@ func (m *Middleware) CheckJWT(ctx iris.Context) error {
 	// If we get here, everything worked and we can set the
 	// user property in context.
 	ctx.Values().Set(m.Options.Jwt.ContextKey, claim)
+	if claim != nil {
+		ctx.Values().Set("userId", claim.Id)
+	}
 
 	return nil
 }
