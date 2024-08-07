@@ -54,14 +54,10 @@ github.com/abmpio/app v0.0.0-20240520130037-6192508e1d2a h1:QqSP1qejrFk5zEpUV4qD
 github.com/abmpio/app v0.0.0-20240520130037-6192508e1d2a/go.mod h1:PNyPZdHRaY5kPCS3ZxGOk1+bQj/5BWeDE9t6aI0Oxqs=
 github.com/abmpio/configurationx v0.0.0-20240520083200-bcc6a8bb57fa h1:a+PVM0zKoSCgCoPb2VBsmh8s1qgis6BRUZyYUNgrClw=
 github.com/abmpio/configurationx v0.0.0-20240520083200-bcc6a8bb57fa/go.mod h1:+dKpgI9DK0dmz83PFE2sKDIbflkKS8o8dQkgnCX3orU=
-github.com/abmpio/entity v0.0.0-20240729171400-7d7d4f3761d9 h1:aH7kJhC/v10oaHEKh6wLGoFfqyX0zH/PMgBPNCSFm28=
-github.com/abmpio/entity v0.0.0-20240729171400-7d7d4f3761d9/go.mod h1:X+vg0X0k3tVVrCrDFTDRtU5gmZ5vfdJRZlFr1gueKNk=
 github.com/abmpio/entity v0.0.0-20240730070501-fc196b5982b9 h1:0ewOe9o5ZplBCtSSFioDby4dHOlDJzHD+2ybRoOGTu8=
 github.com/abmpio/entity v0.0.0-20240730070501-fc196b5982b9/go.mod h1:qxe3OksnkXFH03aqTBpO6KP0D+tdrEuKvtRncmhonLE=
 github.com/abmpio/libx v0.0.0-20240709065727-91e0e507526c h1:YbE4lKqe7pbCayaF2Yk8gv3xtazdwSBuKBjT7G2hDaU=
 github.com/abmpio/libx v0.0.0-20240709065727-91e0e507526c/go.mod h1:1FdlmnwDWa2mTehDyH2JgEozqZv2uTys6LM+PmYRCZg=
-github.com/abmpio/mongodbr v0.0.0-20240729171210-e14da323bcd5 h1:9TE7591blpkLT6itZna2AsVEs23c57Q0eQt6pwe+Ic0=
-github.com/abmpio/mongodbr v0.0.0-20240729171210-e14da323bcd5/go.mod h1:BBOoqVKwv+xv3NG/IuZUPMOHuGKf3TkT0yMcbFvBfQI=
 github.com/abmpio/mongodbr v0.0.0-20240730070346-68e2d1c17880 h1:Us+j1mddWYMuET4DMIAVRqIMOTSewprjjICtwJn9khY=
 github.com/abmpio/mongodbr v0.0.0-20240730070346-68e2d1c17880/go.mod h1:BBOoqVKwv+xv3NG/IuZUPMOHuGKf3TkT0yMcbFvBfQI=
 github.com/abmpio/webserver v0.0.0-20240520131117-9c852c207275 h1:YCqIA7MeoIq4oI4EuuGY91vgiInCQVZd8aXv1oLFO5w=

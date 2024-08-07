@@ -4,6 +4,9 @@ import "github.com/kataras/iris/v12"
 
 type BaseControllerOptions struct {
 	AuthenticatedDisabled bool
+
+	// filter for current login user
+	EnableFilterCurrentUser bool
 }
 
 type BaseEntityControllerOptions struct {
@@ -17,8 +20,6 @@ type BaseEntityControllerOptions struct {
 	DeleteListDisabled bool
 
 	ListFilterFunc func(entityType interface{}, filter map[string]interface{}, ctx iris.Context)
-	// filter for current login user
-	EnableFilterCurrentUser bool
 
 	BaseControllerOptions
 }
