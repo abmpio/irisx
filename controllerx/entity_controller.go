@@ -134,25 +134,6 @@ func (c *EntityController[T]) GetList(ctx iris.Context) {
 	controller.HandleSuccessWithListData(ctx, list, count)
 }
 
-type SearchInput struct {
-	controller.Pagination
-	Filter map[string]interface{} `json:",inline"`
-
-	SortInput
-}
-
-func (i *SearchInput) GetFilterValueAsString(key string) string {
-	v, ok := i.Filter[key].(string)
-	if ok {
-		return v
-	}
-	return ""
-}
-
-type SortInput struct {
-	Sorts []entity.Sort `json:"sorts"`
-}
-
 func (c *EntityController[T]) Search(ctx iris.Context) {
 	input := &SearchInput{}
 	err := ctx.ReadJSON(input)
