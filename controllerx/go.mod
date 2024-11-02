@@ -11,7 +11,7 @@ require (
 	github.com/abmpio/entity v0.0.0-20241031042812-94e322a22600
 	github.com/abmpio/irisx/casdoor v0.0.0-20240326134538-6d07d9ae3c37
 	github.com/abmpio/mongodbr v0.0.0-20241029022631-8182269c6e0b
-	github.com/abmpio/webserver v0.0.0-20241031040345-69aec669c40c
+	github.com/abmpio/webserver v0.0.0-20241102081907-684ce6f904ab
 	github.com/kataras/iris/v12 v12.2.11-0.20240707172138-6776bf0dc945
 	go.mongodb.org/mongo-driver v1.17.1
 )
