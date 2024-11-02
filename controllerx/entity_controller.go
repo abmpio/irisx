@@ -19,11 +19,21 @@ import (
 )
 
 type EntityController[T mongodbr.IEntity] struct {
-	RouterPath    string
 	EntityService entity.IEntityService[T]
+
+	// 针对本路由节点级别的中间件
+	handlerList []context.Handler
 
 	Options BaseEntityControllerOptions
 	once    sync.Once
+}
+
+func NewEntityController[T mongodbr.IEntity](opts ...BaseEntityControllerOption) *EntityController[T] {
+	entityController := &EntityController[T]{}
+	for _, eachOpt := range opts {
+		eachOpt(&(entityController.Options))
+	}
+	return entityController
 }
 
 func (c *EntityController[T]) RegistRouter(webapp *webapp.Application, opts ...BaseEntityControllerOption) router.Party {
@@ -31,31 +41,32 @@ func (c *EntityController[T]) RegistRouter(webapp *webapp.Application, opts ...B
 		eachOpt(&(c.Options))
 	}
 
-	routerParty := webapp.Party(c.RouterPath)
+	c.handlerList = defaultContextHandlers(&c.Options.BaseControllerOptions)
+	routerParty := webapp.Party(c.Options.RouterPath, c.handlerList...)
 
 	if !c.Options.AllDisabled {
-		routerParty.Get("/all", c.MergeAuthenticatedContextIfNeed(c.Options.AuthenticatedDisabled, c.All)...)
+		routerParty.Get("/all", c.All)
 	}
 	if !c.Options.ListDisabled {
-		routerParty.Get("/", c.MergeAuthenticatedContextIfNeed(c.Options.AuthenticatedDisabled, c.GetList)...)
+		routerParty.Get("/", c.GetList)
 	}
 	if !c.Options.SearchDiabled {
-		routerParty.Post("/search", c.MergeAuthenticatedContextIfNeed(c.Options.AuthenticatedDisabled, c.Search)...)
+		routerParty.Post("/search", c.Search)
 	}
 	if !c.Options.GetByIdDisabled {
-		routerParty.Get("/{id}", c.MergeAuthenticatedContextIfNeed(c.Options.AuthenticatedDisabled, c.GetById)...)
+		routerParty.Get("/{id}", c.GetById)
 	}
 	if !c.Options.CreateDisabled {
-		routerParty.Post("/", c.MergeAuthenticatedContextIfNeed(c.Options.AuthenticatedDisabled, c.Create)...)
+		routerParty.Post("/", c.Create)
 	}
 	if !c.Options.UpdateDisabled {
-		routerParty.Put("/{id}", c.MergeAuthenticatedContextIfNeed(c.Options.AuthenticatedDisabled, c.Update)...)
+		routerParty.Put("/{id}", c.Update)
 	}
 	if !c.Options.DeleteDisabled {
-		routerParty.Delete("/{id}", c.MergeAuthenticatedContextIfNeed(c.Options.AuthenticatedDisabled, c.Delete)...)
+		routerParty.Delete("/{id}", c.Delete)
 	}
 	if !c.Options.DeleteListDisabled {
-		routerParty.Delete("/", c.MergeAuthenticatedContextIfNeed(c.Options.AuthenticatedDisabled, c.DeleteList)...)
+		routerParty.Delete("/", c.DeleteList)
 	}
 
 	return routerParty

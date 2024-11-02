@@ -3,10 +3,27 @@ package controllerx
 import "github.com/kataras/iris/v12"
 
 type BaseControllerOptions struct {
+	RouterPath            string
 	AuthenticatedDisabled bool
 
 	// filter for current login user
 	EnableFilterCurrentUser bool
+}
+
+type BaseControllerOption func(*BaseControllerOptions)
+
+// set controller's router path
+func BaseControllerWithRouterPath(routerPath string) BaseControllerOption {
+	return func(bco *BaseControllerOptions) {
+		bco.RouterPath = routerPath
+	}
+}
+
+// set controller's router path
+func BaseControllerWithAuthenticatedDisabled(authenticatedDisabled bool) BaseControllerOption {
+	return func(bco *BaseControllerOptions) {
+		bco.AuthenticatedDisabled = authenticatedDisabled
+	}
 }
 
 type BaseEntityControllerOptions struct {
@@ -39,56 +56,62 @@ func BaseEntityControllerWithAllEndpointDisabled(v bool) BaseEntityControllerOpt
 	}
 }
 
-func BaseEntityControllerWithAllDisabled(v bool) BaseEntityControllerOption {
-	return func(rro *BaseEntityControllerOptions) {
-		rro.AllDisabled = v
-	}
-}
-
-func BaseEntityControllerWithListDisabled(v bool) BaseEntityControllerOption {
-	return func(rro *BaseEntityControllerOptions) {
-		rro.ListDisabled = v
-	}
-}
-
-func BaseEntityControllerWithSearchDisabled(v bool) BaseEntityControllerOption {
-	return func(rro *BaseEntityControllerOptions) {
-		rro.SearchDiabled = v
-	}
-}
-
-func BaseEntityControllerWithGetByIdDisabled(v bool) BaseEntityControllerOption {
-	return func(rro *BaseEntityControllerOptions) {
-		rro.GetByIdDisabled = v
-	}
-}
-
-func BaseEntityControllerWithCreateDisabled(v bool) BaseEntityControllerOption {
-	return func(rro *BaseEntityControllerOptions) {
-		rro.CreateDisabled = v
-	}
-}
-
-func BaseEntityControllerWithUpdateDisabled(v bool) BaseEntityControllerOption {
-	return func(rro *BaseEntityControllerOptions) {
-		rro.UpdateDisabled = v
-	}
-}
-
-func BaseEntityControllerWithDeleteDisabled(v bool) BaseEntityControllerOption {
-	return func(rro *BaseEntityControllerOptions) {
-		rro.DeleteDisabled = v
-	}
-}
-
-func BaseEntityControllerWithDeleteListDisabled(v bool) BaseEntityControllerOption {
-	return func(rro *BaseEntityControllerOptions) {
-		rro.DeleteListDisabled = v
+// set controller's router path
+func BaseEntityControllerWithRouterPath(routerPath string) BaseEntityControllerOption {
+	return func(beco *BaseEntityControllerOptions) {
+		beco.RouterPath = routerPath
 	}
 }
 
 func BaseEntityControllerWithAuthenticatedDisabled(v bool) BaseEntityControllerOption {
-	return func(rro *BaseEntityControllerOptions) {
-		rro.AuthenticatedDisabled = v
+	return func(beco *BaseEntityControllerOptions) {
+		beco.AuthenticatedDisabled = v
+	}
+}
+func BaseEntityControllerWithAllDisabled(v bool) BaseEntityControllerOption {
+	return func(beco *BaseEntityControllerOptions) {
+		beco.AllDisabled = v
+	}
+}
+
+func BaseEntityControllerWithListDisabled(v bool) BaseEntityControllerOption {
+	return func(beco *BaseEntityControllerOptions) {
+		beco.ListDisabled = v
+	}
+}
+
+func BaseEntityControllerWithSearchDisabled(v bool) BaseEntityControllerOption {
+	return func(beco *BaseEntityControllerOptions) {
+		beco.SearchDiabled = v
+	}
+}
+
+func BaseEntityControllerWithGetByIdDisabled(v bool) BaseEntityControllerOption {
+	return func(beco *BaseEntityControllerOptions) {
+		beco.GetByIdDisabled = v
+	}
+}
+
+func BaseEntityControllerWithCreateDisabled(v bool) BaseEntityControllerOption {
+	return func(beco *BaseEntityControllerOptions) {
+		beco.CreateDisabled = v
+	}
+}
+
+func BaseEntityControllerWithUpdateDisabled(v bool) BaseEntityControllerOption {
+	return func(beco *BaseEntityControllerOptions) {
+		beco.UpdateDisabled = v
+	}
+}
+
+func BaseEntityControllerWithDeleteDisabled(v bool) BaseEntityControllerOption {
+	return func(beco *BaseEntityControllerOptions) {
+		beco.DeleteDisabled = v
+	}
+}
+
+func BaseEntityControllerWithDeleteListDisabled(v bool) BaseEntityControllerOption {
+	return func(beco *BaseEntityControllerOptions) {
+		beco.DeleteListDisabled = v
 	}
 }
