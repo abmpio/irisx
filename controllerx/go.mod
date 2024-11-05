@@ -25,7 +25,7 @@ require (
 	github.com/andybalholm/brotli v1.1.0 // indirect
 	github.com/armon/go-metrics v0.4.1 // indirect
 	github.com/aymerick/douceur v0.2.0 // indirect
-	github.com/casdoor/casdoor-go-sdk v0.28.6 // indirect
+	github.com/casdoor/casdoor-go-sdk v1.3.0 // indirect
 	github.com/deckarep/golang-set v1.8.0 // indirect
 	github.com/fatih/color v1.15.0 // indirect
 	github.com/fatih/structs v1.1.0 // indirect
