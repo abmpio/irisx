@@ -5,9 +5,6 @@ import "github.com/kataras/iris/v12"
 type BaseControllerOptions struct {
 	RouterPath            string
 	AuthenticatedDisabled bool
-
-	// filter for current login user
-	EnableFilterCurrentUser bool
 }
 
 type BaseControllerOption func(*BaseControllerOptions)
