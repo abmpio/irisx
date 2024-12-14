@@ -29,7 +29,12 @@ type EntityController[T mongodbr.IEntity] struct {
 }
 
 func NewEntityController[T mongodbr.IEntity](opts ...BaseEntityControllerOption) *EntityController[T] {
-	entityController := &EntityController[T]{}
+	options := BaseEntityControllerOptions{
+		AllDisabled: true,
+	}
+	entityController := &EntityController[T]{
+		Options: options,
+	}
 	for _, eachOpt := range opts {
 		eachOpt(&(entityController.Options))
 	}
