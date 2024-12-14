@@ -4,6 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"sync"
+	"time"
 
 	"github.com/abmpio/entity"
 	"github.com/abmpio/entity/filter"
@@ -252,6 +253,7 @@ func (c *EntityController[T]) Update(ctx iris.Context) {
 		return
 	}
 
+	c.hookUpdate(ctx, input)
 	err = service.UpdateFields(id, input)
 	if err != nil {
 		controller.HandleErrorInternalServerError(ctx, err)
@@ -322,6 +324,23 @@ func (c *EntityController[T]) SetUserInfo(ctx iris.Context, entityValue interfac
 	userId := GetUserId(ctx)
 	if userId != "" {
 		userinfoProvider.SetUserCreator(userId)
+	}
+}
+
+func (c *EntityController[T]) hookUpdate(ctx iris.Context, updated map[string]interface{}) {
+	if len(updated) <= 0 {
+		return
+	}
+	t := new(T)
+	_, ok := interface{}(t).(mongodbr.IModificationEntity)
+	if !ok {
+		return
+	}
+	now := time.Now()
+	updated["lastModificationTime"] = &now
+	userId := GetUserId(ctx)
+	if userId != "" {
+		updated["lastModifierId"] = userId
 	}
 }
 
