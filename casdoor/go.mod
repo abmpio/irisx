@@ -6,7 +6,7 @@ toolchain go1.22.2
 
 require (
 	github.com/abmpio/abmp v0.0.0-20240708094807-9bfd8036f0dc
-	github.com/abmpio/configurationx v0.0.0-20240520083200-bcc6a8bb57fa
+	github.com/abmpio/configurationx v0.0.0-20250101081830-0ad7cbf2589c
 	github.com/casdoor/casdoor-go-sdk v1.3.0
 	github.com/kataras/iris/v12 v12.2.11-0.20240707172138-6776bf0dc945
 )

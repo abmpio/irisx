@@ -6,14 +6,14 @@ toolchain go1.22.2
 
 require (
 	github.com/abmpio/abmp v0.0.0-20240708094807-9bfd8036f0dc
-	github.com/abmpio/app v0.0.0-20240708095820-59076d71a526
-	github.com/abmpio/configurationx v0.0.0-20240520083200-bcc6a8bb57fa
-	github.com/abmpio/entity v0.0.0-20241104024639-d60629f80605
+	github.com/abmpio/app v0.0.0-20250110131404-0d2aea675617
+	github.com/abmpio/configurationx v0.0.0-20241119051043-e57d1c23766e
+	github.com/abmpio/entity v0.0.0-20250110132713-cf1c5269b369
 	github.com/abmpio/irisx/casdoor v0.0.0-20240326134538-6d07d9ae3c37
-	github.com/abmpio/mongodbr v0.0.0-20241029022631-8182269c6e0b
-	github.com/abmpio/webserver v0.0.0-20241102081907-684ce6f904ab
+	github.com/abmpio/mongodbr v0.0.0-20250110132302-d280479ffedf
+	github.com/abmpio/webserver v0.0.0-20250110133059-0550004f277a
 	github.com/kataras/iris/v12 v12.2.11-0.20240707172138-6776bf0dc945
-	go.mongodb.org/mongo-driver v1.17.1
+	go.mongodb.org/mongo-driver v1.17.2
 )
 
 require (
@@ -22,6 +22,7 @@ require (
 	github.com/CloudyKit/jet/v6 v6.2.0 // indirect
 	github.com/Joker/jade v1.1.3 // indirect
 	github.com/Shopify/goreferrer v0.0.0-20240724165105-aceaa0259138 // indirect
+	github.com/abmpio/libx v0.0.0-20241029040836-37d1161ba509 // indirect
 	github.com/andybalholm/brotli v1.1.0 // indirect
 	github.com/armon/go-metrics v0.4.1 // indirect
 	github.com/aymerick/douceur v0.2.0 // indirect
@@ -30,7 +31,7 @@ require (
 	github.com/fatih/color v1.15.0 // indirect
 	github.com/fatih/structs v1.1.0 // indirect
 	github.com/flosch/pongo2/v4 v4.0.2 // indirect
-	github.com/fsnotify/fsnotify v1.7.0 // indirect
+	github.com/fsnotify/fsnotify v1.8.0 // indirect
 	github.com/gabriel-vasile/mimetype v1.4.3 // indirect
 	github.com/go-playground/locales v0.14.1 // indirect
 	github.com/go-playground/universal-translator v0.18.1 // indirect
@@ -101,13 +102,13 @@ require (
 	github.com/youmark/pkcs8 v0.0.0-20240726163527-a2c0da244d78 // indirect
 	go.uber.org/multierr v1.11.0 // indirect
 	go.uber.org/zap v1.27.0 // indirect
-	golang.org/x/crypto v0.28.0 // indirect
-	golang.org/x/exp v0.0.0-20241009180824-f66d83c29e7c // indirect
+	golang.org/x/crypto v0.32.0 // indirect
+	golang.org/x/exp v0.0.0-20241108190413-2d47ceb2692f // indirect
 	golang.org/x/net v0.28.0 // indirect
 	golang.org/x/oauth2 v0.18.0 // indirect
-	golang.org/x/sync v0.8.0 // indirect
-	golang.org/x/sys v0.26.0 // indirect
-	golang.org/x/text v0.19.0 // indirect
+	golang.org/x/sync v0.10.0 // indirect
+	golang.org/x/sys v0.29.0 // indirect
+	golang.org/x/text v0.21.0 // indirect
 	golang.org/x/time v0.6.0 // indirect
 	google.golang.org/appengine v1.6.8 // indirect
 	google.golang.org/protobuf v1.34.2 // indirect
