@@ -33,7 +33,7 @@ func defaultContextHandlers(o *BaseControllerOptions) []context.Handler {
 	// add authenticate middleware
 	if !o.AuthenticatedDisabled {
 		// handler auth
-		handlerList = append(handlerList, GetCasdoorMiddleware().Serve)
+		handlerList = append(handlerList, GetMustAuthenticatedMiddleware().Serve)
 	}
 	return handlerList
 }

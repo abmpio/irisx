@@ -6,7 +6,7 @@ func MergeAuthenticatedContextIfNeed(authenticatedDisabled bool, handlers ...con
 	handlerList := make([]context.Handler, 0)
 	if !authenticatedDisabled {
 		// handler auth
-		handlerList = append(handlerList, GetCasdoorMiddleware().Serve)
+		handlerList = append(handlerList, GetMustAuthenticatedMiddleware().Serve)
 	}
 	handlerList = append(handlerList, handlers...)
 	return handlerList

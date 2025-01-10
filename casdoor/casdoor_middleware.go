@@ -1,7 +1,6 @@
 package casdoor
 
 import (
-	"errors"
 	"fmt"
 	"strings"
 
@@ -32,11 +31,12 @@ type CasdoorOptions struct {
 	Extractor TokenExtractor
 }
 
-type Middleware struct {
+// set useId to context
+type CasdoorMiddleware struct {
 	Options CasdoorOptions
 }
 
-func New(opts ...CasdoorOptions) *Middleware {
+func NewCasdoorMiddleware(opts ...CasdoorOptions) *CasdoorMiddleware {
 	var options CasdoorOptions
 	if len(opts) == 0 {
 		options = CasdoorOptions{}
@@ -61,7 +61,7 @@ func New(opts ...CasdoorOptions) *Middleware {
 		options.Extractor = FromAuthHeader
 	}
 
-	return &Middleware{
+	return &CasdoorMiddleware{
 		Options: options,
 	}
 }
@@ -106,7 +106,7 @@ func FromHeader(key string) TokenExtractor {
 		}
 		authHeaderParts := strings.Split(headerValue, " ")
 		if len(authHeaderParts) > 1 && strings.ToLower(authHeaderParts[0]) == "bearer" {
-			return "", nil
+			return authHeaderParts[1], nil
 		}
 		return headerValue, nil
 	}
@@ -137,18 +137,12 @@ func FromFirst(extractors ...TokenExtractor) TokenExtractor {
 	}
 }
 
-var (
-	// ErrTokenMissing is the error value that it's returned when
-	// a token is not found based on the token extractor.
-	ErrTokenMissing = errors.New("required authorization token not found")
-)
-
 func logf(ctx iris.Context, format string, args ...interface{}) {
 	ctx.Application().Logger().Debugf(format, args...)
 }
 
 // Get returns the user (&token) information for this client/request
-func (m *Middleware) Get(ctx iris.Context) *casdoorsdk.Claims {
+func (m *CasdoorMiddleware) Get(ctx iris.Context) *casdoorsdk.Claims {
 	v := ctx.Values().Get(m.Options.Jwt.ContextKey)
 	if v == nil {
 		return nil
@@ -157,7 +151,7 @@ func (m *Middleware) Get(ctx iris.Context) *casdoorsdk.Claims {
 }
 
 // Serve the middleware's action
-func (m *Middleware) Serve(ctx iris.Context) {
+func (m *CasdoorMiddleware) Serve(ctx iris.Context) {
 	if err := m.CheckJWT(ctx); err != nil {
 		m.Options.ErrorHandler(ctx, err)
 		return
@@ -166,7 +160,7 @@ func (m *Middleware) Serve(ctx iris.Context) {
 	ctx.Next()
 }
 
-func (m *Middleware) CheckJWT(ctx iris.Context) error {
+func (m *CasdoorMiddleware) CheckJWT(ctx iris.Context) error {
 	// is authenticated by other middleware?
 	user := m.GetUserClaims(ctx)
 	if user != nil {
@@ -184,20 +178,17 @@ func (m *Middleware) CheckJWT(ctx iris.Context) error {
 
 	// If the token is empty...
 	if token == "" {
-		// Check if it was required
-		if m.Options.Jwt.CredentialsOptional {
-			log.Logger.Debug("No credentials found (CredentialsOptional=true)")
-			// No error, just no token (and that is ok given that CredentialsOptional is true)
-			return nil
-		}
+		return nil
+	}
 
-		// If we get here, the required token is missing
-		log.Logger.Warn("Error: No credentials found (CredentialsOptional=false)")
-		return ErrTokenMissing
+	// Check if it was required
+	if m.Options.Jwt.CredentialsOptional {
+		log.Logger.Debug("No credentials found (CredentialsOptional=true)")
+		// No error, just no token (and that is ok given that CredentialsOptional is true)
+		return nil
 	}
 
 	// Now parse the token
-
 	claim, err := casdoorsdk.ParseJwtToken(token)
 	// Check if there was an error in parsing...
 	if err != nil {
@@ -217,7 +208,7 @@ func (m *Middleware) CheckJWT(ctx iris.Context) error {
 	return nil
 }
 
-func (m *Middleware) GetUserClaims(ctx iris.Context) *casdoorsdk.Claims {
+func (m *CasdoorMiddleware) GetUserClaims(ctx iris.Context) *casdoorsdk.Claims {
 	claims, ok := ctx.Value(m.Options.Jwt.ContextKey).(*casdoorsdk.Claims)
 	if !ok {
 		return nil

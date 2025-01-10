@@ -9,21 +9,28 @@ import (
 )
 
 var (
-	_casdoorOptions casdoor.CasdoorOptions
-	_cm             *casdoor.Middleware
-	_sync           sync.Once
+	_casdoorOptions     casdoor.CasdoorOptions
+	_casdoorM           *casdoor.CasdoorMiddleware
+	_mustAuthenticatedM *casdoor.MustAuthenticated
+	_sync               sync.Once
 )
 
-func GetCasdoorMiddleware() *casdoor.Middleware {
+func GetCasdoorMiddleware() *casdoor.CasdoorMiddleware {
 	_sync.Do(func() {
 		casdoorOpt := &optCasdoor.CasdoorOptions{}
 		configurationx.GetInstance().UnmarshalPropertiesTo(optCasdoor.ConfigurationKey, casdoorOpt)
 		_casdoorOptions = casdoor.CasdoorOptions{
 			CasdoorOptions: *casdoorOpt,
-			Extractor: casdoor.FromFirst(casdoor.FromHeader("Authorization"),
-				casdoor.FromAuthHeader),
+			Extractor:      casdoor.FromFirst(casdoor.FromAuthHeader, casdoor.FromHeader("Authorization")),
 		}
-		_cm = casdoor.New(_casdoorOptions)
+		_casdoorM = casdoor.NewCasdoorMiddleware(_casdoorOptions)
 	})
-	return _cm
+	return _casdoorM
+}
+
+func GetMustAuthenticatedMiddleware() *casdoor.MustAuthenticated {
+	_sync.Do(func() {
+		_mustAuthenticatedM = casdoor.NewMustAuthenticated()
+	})
+	return _mustAuthenticatedM
 }
