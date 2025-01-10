@@ -209,7 +209,11 @@ func (m *CasdoorMiddleware) CheckJWT(ctx iris.Context) error {
 }
 
 func (m *CasdoorMiddleware) GetUserClaims(ctx iris.Context) *casdoorsdk.Claims {
-	claims, ok := ctx.Value(m.Options.Jwt.ContextKey).(*casdoorsdk.Claims)
+	v := ctx.Value(m.Options.Jwt.ContextKey)
+	if v == nil {
+		return nil
+	}
+	claims, ok := v.(*casdoorsdk.Claims)
 	if !ok {
 		return nil
 	}
