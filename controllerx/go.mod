@@ -7,11 +7,11 @@ toolchain go1.22.2
 require (
 	github.com/abmpio/abmp v0.0.0-20240708094807-9bfd8036f0dc
 	github.com/abmpio/app v0.0.0-20250110131404-0d2aea675617
-	github.com/abmpio/configurationx v0.0.0-20241119051043-e57d1c23766e
-	github.com/abmpio/entity v0.0.0-20250110132713-cf1c5269b369
+	github.com/abmpio/configurationx v0.0.0-20250101081830-0ad7cbf2589c
+	github.com/abmpio/entity v0.0.0-20250110144511-a9fd2bf2b5df
 	github.com/abmpio/irisx/casdoor v0.0.0-20240326134538-6d07d9ae3c37
 	github.com/abmpio/mongodbr v0.0.0-20250110132302-d280479ffedf
-	github.com/abmpio/webserver v0.0.0-20250110133059-0550004f277a
+	github.com/abmpio/webserver v0.0.0-20250110142900-e3015d020ec0
 	github.com/kataras/iris/v12 v12.2.11-0.20240707172138-6776bf0dc945
 	go.mongodb.org/mongo-driver v1.17.2
 )
