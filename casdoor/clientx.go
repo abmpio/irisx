@@ -44,6 +44,7 @@ func NewCassdorClientX(config *casdoorsdk.AuthConfig) *ClientX {
 func NewCassdorClientXFromGlobal() *ClientX {
 	casdoorOpt := &optCasdoor.CasdoorOptions{}
 	configurationx.GetInstance().UnmarshalPropertiesTo(optCasdoor.ConfigurationKey, casdoorOpt)
+	casdoorOpt.Normalize()
 	authConfig := &casdoorsdk.AuthConfig{
 		Endpoint:         casdoorOpt.Endpoint,
 		ClientId:         casdoorOpt.ClientId,
