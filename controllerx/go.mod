@@ -8,9 +8,9 @@ require (
 	github.com/abmpio/abmp v0.0.0-20240708094807-9bfd8036f0dc
 	github.com/abmpio/app v0.0.0-20250316102917-c6228484a2a5
 	github.com/abmpio/configurationx v0.0.0-20250316102208-bb34a5de7a88
-	github.com/abmpio/entity v0.0.0-20250316105324-94fc0bf94738
+	github.com/abmpio/entity v0.0.0-20250412144536-5a6e3d5eae43
 	github.com/abmpio/irisx/casdoor v0.0.0-20250316100020-50ae1cd9f370
-	github.com/abmpio/mongodbr v0.0.0-20250316104744-4897aa7fc7aa
+	github.com/abmpio/mongodbr v0.0.0-20250403054803-4b663ca8131f
 	github.com/abmpio/webserver v0.0.0-20250316095628-f1dd590ed3be
 	github.com/kataras/iris/v12 v12.2.11
 	go.mongodb.org/mongo-driver v1.17.3
@@ -99,13 +99,13 @@ require (
 	github.com/youmark/pkcs8 v0.0.0-20240726163527-a2c0da244d78 // indirect
 	go.uber.org/multierr v1.11.0 // indirect
 	go.uber.org/zap v1.27.0 // indirect
-	golang.org/x/crypto v0.36.0 // indirect
+	golang.org/x/crypto v0.37.0 // indirect
 	golang.org/x/exp v0.0.0-20250305212735-054e65f0b394 // indirect
 	golang.org/x/net v0.37.0 // indirect
 	golang.org/x/oauth2 v0.28.0 // indirect
-	golang.org/x/sync v0.12.0 // indirect
-	golang.org/x/sys v0.31.0 // indirect
-	golang.org/x/text v0.23.0 // indirect
+	golang.org/x/sync v0.13.0 // indirect
+	golang.org/x/sys v0.32.0 // indirect
+	golang.org/x/text v0.24.0 // indirect
 	golang.org/x/time v0.11.0 // indirect
 	google.golang.org/protobuf v1.36.5 // indirect
 	gopkg.in/ini.v1 v1.67.0 // indirect

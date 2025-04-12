@@ -355,9 +355,9 @@ func SetupFindOptionsWithSort(i SortInput) []mongodbr.FindOption {
 			continue
 		}
 		var isAsc bool
-		if eachSort.Direction == entity.ASCENDING {
+		if eachSort.Direction == entity.ASCENDING || eachSort.Direction == entity.ASC {
 			isAsc = true
-		} else if eachSort.Direction == entity.DESCENDING {
+		} else if eachSort.Direction == entity.DESCENDING || eachSort.Direction == entity.DESC {
 			isAsc = false
 		} else {
 			// invalid direction
