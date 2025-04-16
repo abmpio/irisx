@@ -43,16 +43,6 @@ func NewCasdoorMiddleware(opts ...CasdoorOptions) *CasdoorMiddleware {
 	} else {
 		options = opts[0]
 	}
-	options.Normalize()
-	if !options.Disabled {
-		casdoorsdk.InitConfig(options.Endpoint,
-			options.ClientId,
-			options.ClientSecret,
-			options.Certificate,
-			options.OrganizationName,
-			options.ApplicationName)
-	}
-
 	if options.ErrorHandler == nil {
 		options.ErrorHandler = OnError
 	}

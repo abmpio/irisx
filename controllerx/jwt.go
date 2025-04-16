@@ -3,8 +3,6 @@ package controllerx
 import (
 	"sync"
 
-	"github.com/abmpio/configurationx"
-	optCasdoor "github.com/abmpio/configurationx/options/casdoor"
 	"github.com/abmpio/irisx/casdoor"
 )
 
@@ -17,12 +15,7 @@ var (
 
 func GetCasdoorMiddleware() *casdoor.CasdoorMiddleware {
 	_sync.Do(func() {
-		casdoorOpt := &optCasdoor.CasdoorOptions{}
-		configurationx.GetInstance().UnmarshalPropertiesTo(optCasdoor.ConfigurationKey, casdoorOpt)
-		_casdoorOptions = casdoor.CasdoorOptions{
-			CasdoorOptions: *casdoorOpt,
-			Extractor:      casdoor.FromFirst(casdoor.FromAuthHeader, casdoor.FromHeader("Authorization")),
-		}
+		_casdoorOptions = *casdoor.InitCasdoorSdk()
 		_casdoorM = casdoor.NewCasdoorMiddleware(_casdoorOptions)
 	})
 	return _casdoorM

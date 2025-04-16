@@ -7,7 +7,6 @@ toolchain go1.23.5
 require (
 	github.com/abmpio/abmp v0.0.0-20240708094807-9bfd8036f0dc
 	github.com/abmpio/app v0.0.0-20250316102917-c6228484a2a5
-	github.com/abmpio/configurationx v0.0.0-20250316102208-bb34a5de7a88
 	github.com/abmpio/entity v0.0.0-20250412144536-5a6e3d5eae43
 	github.com/abmpio/irisx/casdoor v0.0.0-20250316100020-50ae1cd9f370
 	github.com/abmpio/mongodbr v0.0.0-20250403054803-4b663ca8131f
@@ -22,16 +21,17 @@ require (
 	github.com/CloudyKit/jet/v6 v6.3.1 // indirect
 	github.com/Joker/jade v1.1.3 // indirect
 	github.com/Shopify/goreferrer v0.0.0-20240724165105-aceaa0259138 // indirect
+	github.com/abmpio/configurationx v0.0.0-20250405143614-7d0f8d4abd37 // indirect
 	github.com/abmpio/libx v0.0.0-20250122091832-703dd45ef186 // indirect
 	github.com/andybalholm/brotli v1.1.1 // indirect
 	github.com/armon/go-metrics v0.4.1 // indirect
 	github.com/aymerick/douceur v0.2.0 // indirect
 	github.com/casdoor/casdoor-go-sdk v1.5.0 // indirect
 	github.com/deckarep/golang-set v1.8.0 // indirect
-	github.com/fatih/color v1.15.0 // indirect
+	github.com/fatih/color v1.18.0 // indirect
 	github.com/fatih/structs v1.1.0 // indirect
 	github.com/flosch/pongo2/v4 v4.0.2 // indirect
-	github.com/fsnotify/fsnotify v1.8.0 // indirect
+	github.com/fsnotify/fsnotify v1.9.0 // indirect
 	github.com/gabriel-vasile/mimetype v1.4.3 // indirect
 	github.com/go-playground/locales v0.14.1 // indirect
 	github.com/go-playground/universal-translator v0.18.1 // indirect
@@ -42,15 +42,16 @@ require (
 	github.com/gomarkdown/markdown v0.0.0-20250311123330-531bef5e742b // indirect
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/gorilla/css v1.0.1 // indirect
-	github.com/hashicorp/consul/api v1.28.2 // indirect
+	github.com/hashicorp/consul/api v1.31.2 // indirect
 	github.com/hashicorp/errwrap v1.1.0 // indirect
 	github.com/hashicorp/go-cleanhttp v0.5.2 // indirect
-	github.com/hashicorp/go-hclog v1.5.0 // indirect
+	github.com/hashicorp/go-hclog v1.6.3 // indirect
 	github.com/hashicorp/go-immutable-radix v1.3.1 // indirect
+	github.com/hashicorp/go-metrics v0.5.4 // indirect
 	github.com/hashicorp/go-multierror v1.1.1 // indirect
 	github.com/hashicorp/go-rootcerts v1.0.2 // indirect
 	github.com/hashicorp/golang-lru v1.0.2 // indirect
-	github.com/hashicorp/serf v0.10.1 // indirect
+	github.com/hashicorp/serf v0.10.2 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/iris-contrib/middleware/cors v0.0.0-20230817093337-c874b7c7eb8a // indirect
 	github.com/iris-contrib/schema v0.0.6 // indirect
@@ -66,16 +67,16 @@ require (
 	github.com/lestrrat-go/strftime v1.1.0 // indirect
 	github.com/mailgun/raymond/v2 v2.0.48 // indirect
 	github.com/mailru/easyjson v0.9.0 // indirect
-	github.com/mattn/go-colorable v0.1.13 // indirect
-	github.com/mattn/go-isatty v0.0.19 // indirect
+	github.com/mattn/go-colorable v0.1.14 // indirect
+	github.com/mattn/go-isatty v0.0.20 // indirect
 	github.com/microcosm-cc/bluemonday v1.0.27 // indirect
 	github.com/mitchellh/go-homedir v1.1.0 // indirect
 	github.com/mitchellh/mapstructure v1.5.0 // indirect
 	github.com/montanaflynn/stats v0.7.1 // indirect
-	github.com/pelletier/go-toml/v2 v2.2.3 // indirect
+	github.com/pelletier/go-toml/v2 v2.2.4 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/russross/blackfriday/v2 v2.1.0 // indirect
-	github.com/sagikazarmark/locafero v0.8.0 // indirect
+	github.com/sagikazarmark/locafero v0.9.0 // indirect
 	github.com/satori/go.uuid v1.2.0 // indirect
 	github.com/schollz/closestmatch v2.1.0+incompatible // indirect
 	github.com/sirupsen/logrus v1.9.3 // indirect
@@ -83,9 +84,8 @@ require (
 	github.com/spf13/afero v1.14.0 // indirect
 	github.com/spf13/cast v1.7.1 // indirect
 	github.com/spf13/cobra v1.7.0 // indirect
-	github.com/spf13/jwalterweatherman v1.1.0 // indirect
 	github.com/spf13/pflag v1.0.6 // indirect
-	github.com/spf13/viper v1.20.0 // indirect
+	github.com/spf13/viper v1.20.1 // indirect
 	github.com/subosito/gotenv v1.6.0 // indirect
 	github.com/tdewolff/minify/v2 v2.22.2 // indirect
 	github.com/tdewolff/parse/v2 v2.7.21 // indirect
