@@ -125,8 +125,8 @@ func (c *EntityController[T]) GetList(ctx iris.Context) {
 	sort := filter.MustGetSortOption(ctx.FormValue)
 
 	service := c.GetEntityService()
-	list, err := service.FindList(query, mongodbr.FindOptionWithSort(sort),
-		mongodbr.FindOptionWithPage(int64(pagination.Page), int64(pagination.Size)))
+	list, err := service.FindList(query, mongodbr.MongodbrFindOptionWithSort(sort),
+		mongodbr.MongodbrFindOptionWithPage(int64(pagination.Page), int64(pagination.Size)))
 	if err != nil {
 		controller.HandleErrorInternalServerError(ctx, err)
 		return
@@ -153,8 +153,8 @@ func (c *EntityController[T]) Search(ctx iris.Context) {
 		return
 	}
 
-	findOptions := make([]mongodbr.FindOption, 0)
-	findOptions = append(findOptions, mongodbr.FindOptionWithPage(int64(input.CurrentPage), int64(input.PageSize)))
+	findOptions := make([]mongodbr.MongodbrFindOption, 0)
+	findOptions = append(findOptions, mongodbr.MongodbrFindOptionWithPage(int64(input.CurrentPage), int64(input.PageSize)))
 	findOptions = append(findOptions, SetupFindOptionsWithSort(input.SortInput)...)
 	service := c.GetEntityService()
 	list, err := service.FindList(input.Filter, findOptions...)
@@ -344,8 +344,8 @@ func (c *EntityController[T]) hookUpdate(ctx iris.Context, updated map[string]in
 	}
 }
 
-func SetupFindOptionsWithSort(i SortInput) []mongodbr.FindOption {
-	opts := make([]mongodbr.FindOption, 0)
+func SetupFindOptionsWithSort(i SortInput) []mongodbr.MongodbrFindOption {
+	opts := make([]mongodbr.MongodbrFindOption, 0)
 	if len(i.Sorts) <= 0 {
 		return opts
 	}
@@ -363,7 +363,7 @@ func SetupFindOptionsWithSort(i SortInput) []mongodbr.FindOption {
 			// invalid direction
 			continue
 		}
-		opts = append(opts, mongodbr.FindOptionWithFieldSort(eachSort.Key, isAsc))
+		opts = append(opts, mongodbr.MongodbrFindOptionWithFieldSort(eachSort.Key, isAsc))
 	}
 	return opts
 }
