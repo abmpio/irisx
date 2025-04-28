@@ -14,6 +14,8 @@ func InitCasdoorSdk(opts ...func(*CasdoorOptions)) *CasdoorOptions {
 		CasdoorOptions: *casdoorOpt,
 		Extractor:      FromFirst(FromAuthHeader, FromHeader("Authorization")),
 	}
+	// normalize
+	casdoorOpt.Normalize()
 	for _, eachOpt := range opts {
 		eachOpt(casdoorOptions)
 	}
