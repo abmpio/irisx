@@ -10,15 +10,17 @@ import (
 func InitCasdoorSdk(opts ...func(*CasdoorOptions)) *CasdoorOptions {
 	casdoorOpt := &optCasdoor.CasdoorOptions{}
 	configurationx.GetInstance().UnmarshalPropertiesTo(optCasdoor.ConfigurationKey, casdoorOpt)
+	// normalize
+	casdoorOpt.Normalize()
+
 	casdoorOptions := &CasdoorOptions{
 		CasdoorOptions: *casdoorOpt,
 		Extractor:      FromFirst(FromAuthHeader, FromHeader("Authorization")),
 	}
-	// normalize
-	casdoorOpt.Normalize()
 	for _, eachOpt := range opts {
 		eachOpt(casdoorOptions)
 	}
+
 	casdoorsdk.InitConfig(casdoorOptions.Endpoint,
 		casdoorOptions.ClientId,
 		casdoorOptions.ClientSecret,
