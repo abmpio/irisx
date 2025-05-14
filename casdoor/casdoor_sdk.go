@@ -1,17 +1,13 @@
 package casdoor
 
 import (
-	"github.com/abmpio/configurationx"
-	optCasdoor "github.com/abmpio/configurationx/options/casdoor"
+	casdoorClient "github.com/abmpio/casdoor_client/sdk"
 	"github.com/casdoor/casdoor-go-sdk/casdoorsdk"
 )
 
 // init casdoorsdk
 func InitCasdoorSdk(opts ...func(*CasdoorOptions)) *CasdoorOptions {
-	casdoorOpt := &optCasdoor.CasdoorOptions{}
-	configurationx.GetInstance().UnmarshalPropertiesTo(optCasdoor.ConfigurationKey, casdoorOpt)
-	// normalize
-	casdoorOpt.Normalize()
+	casdoorOpt := casdoorClient.GetGlobalCasdoorOptions()
 
 	casdoorOptions := &CasdoorOptions{
 		CasdoorOptions: *casdoorOpt,
