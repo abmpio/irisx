@@ -45,6 +45,13 @@ func (i *SearchInput) GetFilterValueAsString(key string) string {
 	return ""
 }
 
+// 确保Filter属性不为nil
+func (i *SearchInput) EnsureFilterNotNil() {
+	if i.Filter == nil {
+		i.Filter = make(map[string]interface{})
+	}
+}
+
 func (i *SearchInput) ReadFromQuery(ctx iris.Context) error {
 	err := ctx.ReadQuery(&i.Pagination)
 	if err != nil {
