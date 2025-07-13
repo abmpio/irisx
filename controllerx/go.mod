@@ -9,7 +9,7 @@ require (
 	github.com/abmpio/app v0.0.0-20250316102917-c6228484a2a5
 	github.com/abmpio/entity v0.0.0-20250428062237-a50137882c61
 	github.com/abmpio/irisx/casdoor v0.0.0-20250316100020-50ae1cd9f370
-	github.com/abmpio/mongodbr v0.0.0-20250428062021-e099217426ae
+	github.com/abmpio/mongodbr v0.0.0-20250712084113-53e8110b7466
 	github.com/abmpio/webserver v0.0.0-20250316095628-f1dd590ed3be
 	github.com/kataras/iris/v12 v12.2.11
 	go.mongodb.org/mongo-driver v1.17.3
@@ -23,7 +23,7 @@ require (
 	github.com/Shopify/goreferrer v0.0.0-20240724165105-aceaa0259138 // indirect
 	github.com/abmpio/casdoor_client v0.0.0-20250513163417-78d17aab67bf // indirect
 	github.com/abmpio/configurationx v0.0.0-20250514030648-55ccd037d034 // indirect
-	github.com/abmpio/libx v0.0.0-20250122091832-703dd45ef186 // indirect
+	github.com/abmpio/libx v0.0.0-20250709090943-e5b79758f21f // indirect
 	github.com/andybalholm/brotli v1.1.1 // indirect
 	github.com/armon/go-metrics v0.4.1 // indirect
 	github.com/aymerick/douceur v0.2.0 // indirect
@@ -102,13 +102,13 @@ require (
 	github.com/youmark/pkcs8 v0.0.0-20240726163527-a2c0da244d78 // indirect
 	go.uber.org/multierr v1.11.0 // indirect
 	go.uber.org/zap v1.27.0 // indirect
-	golang.org/x/crypto v0.37.0 // indirect
-	golang.org/x/exp v0.0.0-20250305212735-054e65f0b394 // indirect
-	golang.org/x/net v0.37.0 // indirect
+	golang.org/x/crypto v0.40.0 // indirect
+	golang.org/x/exp v0.0.0-20250711185948-6ae5c78190dc // indirect
+	golang.org/x/net v0.41.0 // indirect
 	golang.org/x/oauth2 v0.28.0 // indirect
-	golang.org/x/sync v0.14.0 // indirect
-	golang.org/x/sys v0.33.0 // indirect
-	golang.org/x/text v0.25.0 // indirect
+	golang.org/x/sync v0.16.0 // indirect
+	golang.org/x/sys v0.34.0 // indirect
+	golang.org/x/text v0.27.0 // indirect
 	golang.org/x/time v0.11.0 // indirect
 	google.golang.org/protobuf v1.36.5 // indirect
 	gopkg.in/ini.v1 v1.67.0 // indirect
