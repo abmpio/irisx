@@ -6,13 +6,13 @@ toolchain go1.24.1
 
 require (
 	github.com/abmpio/abmp v0.0.0-20251111100814-b388b7309978
-	github.com/abmpio/app v0.0.0-20250405145210-604e829a8eb0
-	github.com/abmpio/entity v0.0.0-20251111101616-8070dbc3ebbe
+	github.com/abmpio/app v0.0.0-20251117083545-747a0d94c71c
+	github.com/abmpio/entity v0.0.0-20260507125849-3f463419884f
 	github.com/abmpio/irisx/casdoor v0.0.0-20250316100020-50ae1cd9f370
-	github.com/abmpio/mongodbr v0.0.0-20251111101002-feaf6969d42f
+	github.com/abmpio/mongodbr v0.0.0-20260507123253-9b1ccc56b3eb
 	github.com/abmpio/webserver v0.0.0-20250505084631-bdad4b542e1c
 	github.com/kataras/iris/v12 v12.2.11
-	go.mongodb.org/mongo-driver v1.17.6
+	go.mongodb.org/mongo-driver/v2 v2.6.0
 )
 
 require (
@@ -74,7 +74,6 @@ require (
 	github.com/microcosm-cc/bluemonday v1.0.27 // indirect
 	github.com/mitchellh/go-homedir v1.1.0 // indirect
 	github.com/mitchellh/mapstructure v1.5.0 // indirect
-	github.com/montanaflynn/stats v0.7.1 // indirect
 	github.com/nyaruka/phonenumbers v1.5.0 // indirect
 	github.com/pelletier/go-toml/v2 v2.2.4 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
@@ -95,7 +94,7 @@ require (
 	github.com/vmihailenco/msgpack/v5 v5.4.1 // indirect
 	github.com/vmihailenco/tagparser/v2 v2.0.0 // indirect
 	github.com/xdg-go/pbkdf2 v1.0.0 // indirect
-	github.com/xdg-go/scram v1.1.2 // indirect
+	github.com/xdg-go/scram v1.2.0 // indirect
 	github.com/xdg-go/stringprep v1.0.4 // indirect
 	github.com/yosssi/ace v0.0.5 // indirect
 	github.com/youmark/pkcs8 v0.0.0-20240726163527-a2c0da244d78 // indirect

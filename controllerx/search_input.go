@@ -4,7 +4,7 @@ import (
 	"github.com/abmpio/entity"
 	"github.com/abmpio/webserver/controller"
 	"github.com/kataras/iris/v12"
-	"go.mongodb.org/mongo-driver/bson/primitive"
+	"go.mongodb.org/mongo-driver/v2/bson"
 )
 
 type SearchInput struct {
@@ -14,8 +14,8 @@ type SearchInput struct {
 	SortInput
 }
 
-// 获取指定的key的primitive.ObjectID值
-func (i *SearchInput) GetFilterValueAsObjectId(key string) (*primitive.ObjectID, error) {
+// 获取指定的key的bson.ObjectID值
+func (i *SearchInput) GetFilterValueAsObjectId(key string) (*bson.ObjectID, error) {
 	if len(i.Filter) <= 0 {
 		return nil, nil
 	}
@@ -26,7 +26,7 @@ func (i *SearchInput) GetFilterValueAsObjectId(key string) (*primitive.ObjectID,
 	if len(v) <= 0 {
 		return nil, nil
 	}
-	oid, err := primitive.ObjectIDFromHex(v)
+	oid, err := bson.ObjectIDFromHex(v)
 	if err != nil {
 		return nil, err
 	}

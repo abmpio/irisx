@@ -13,8 +13,7 @@ import (
 	"github.com/kataras/iris/v12"
 	"github.com/kataras/iris/v12/context"
 	"github.com/kataras/iris/v12/core/router"
-	"go.mongodb.org/mongo-driver/bson"
-	"go.mongodb.org/mongo-driver/bson/primitive"
+	"go.mongodb.org/mongo-driver/v2/bson"
 
 	webapp "github.com/abmpio/webserver/app"
 )
@@ -181,7 +180,7 @@ func (c *EntityController[T]) GetById(ctx iris.Context) {
 		return
 	}
 
-	id, err := primitive.ObjectIDFromHex(idValue)
+	id, err := bson.ObjectIDFromHex(idValue)
 	if err != nil {
 		controller.HandleErrorBadRequest(ctx, fmt.Errorf("invalid id,id must be bson id format,id:%s", idValue))
 		return
@@ -230,7 +229,7 @@ func (c *EntityController[T]) Update(ctx iris.Context) {
 		controller.HandleErrorBadRequest(ctx, errors.New("id must not be empty"))
 		return
 	}
-	id, err := primitive.ObjectIDFromHex(idValue)
+	id, err := bson.ObjectIDFromHex(idValue)
 	if err != nil {
 		controller.HandleErrorBadRequest(ctx, fmt.Errorf("invalid id,id must be bson id format,id:%s", idValue))
 		return
@@ -269,7 +268,7 @@ func (c *EntityController[T]) Delete(ctx iris.Context) {
 		controller.HandleErrorBadRequest(ctx, errors.New("id must not be empty"))
 		return
 	}
-	oid, err := primitive.ObjectIDFromHex(idValue)
+	oid, err := bson.ObjectIDFromHex(idValue)
 	if err != nil {
 		controller.HandleErrorBadRequest(ctx, fmt.Errorf("invalid id format,err:%s", err.Error()))
 		return
