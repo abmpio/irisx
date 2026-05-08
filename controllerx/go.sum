@@ -20,12 +20,12 @@ github.com/abmpio/casdoor_client v0.0.0-20250827100140-f5dcc80ec76c h1:iB5ZRQJF2
 github.com/abmpio/casdoor_client v0.0.0-20250827100140-f5dcc80ec76c/go.mod h1:NsqGdwHHPhQjff5Jwy3pdhOWXZtrnaHynqA2GNv2bqM=
 github.com/abmpio/configurationx v0.0.0-20250514030648-55ccd037d034 h1:HrNBErxhA3P3+4d6zpvYDimcM/fyR+9FaqzueDb4Wbg=
 github.com/abmpio/configurationx v0.0.0-20250514030648-55ccd037d034/go.mod h1:FlAIvGgmFA4Y/tgOcvIAlD9oPTEzM10y8wufMo5pSyM=
-github.com/abmpio/entity v0.0.0-20260507125849-3f463419884f h1:h0VQkT12TH9KpZgyYN9q0VM35+7i90yddWm5JIOruG4=
-github.com/abmpio/entity v0.0.0-20260507125849-3f463419884f/go.mod h1:X8xmtkeVG0KGr5Wp3SeUwBC65LchDHXDNm7uWvuQODI=
+github.com/abmpio/entity v0.0.0-20260508162423-1dd8e5efbd91 h1:RknHFnIkhc2LLE9hQJmwNkw21k8ZxsrwjbUAddi4wuA=
+github.com/abmpio/entity v0.0.0-20260508162423-1dd8e5efbd91/go.mod h1:v9a3CW4oPteR7GnRqCTINDOYKaRhWcSNGj2uaMsM36I=
 github.com/abmpio/libx v0.0.0-20251025150424-a9353a6e248f h1:9z3+r1XWqtAHWWejqX8f2RSqpJSVenT4DWCQxE0v/1s=
 github.com/abmpio/libx v0.0.0-20251025150424-a9353a6e248f/go.mod h1:1FdlmnwDWa2mTehDyH2JgEozqZv2uTys6LM+PmYRCZg=
-github.com/abmpio/mongodbr v0.0.0-20260507123253-9b1ccc56b3eb h1:z//80Sa2TARcKYQzABmUsiHftSa8ADypSPKScJvwRrA=
-github.com/abmpio/mongodbr v0.0.0-20260507123253-9b1ccc56b3eb/go.mod h1:TFLBhFBTiKFxQt2rXsLYOrE1rhCpMM9OxOHokZdqU0o=
+github.com/abmpio/mongodbr v0.0.0-20260508161118-64c0a0c6aacf h1:AUGdPqPmH0Arx0oUkIO+gHwB6BGyrBCdWAFby59ixLs=
+github.com/abmpio/mongodbr v0.0.0-20260508161118-64c0a0c6aacf/go.mod h1:TFLBhFBTiKFxQt2rXsLYOrE1rhCpMM9OxOHokZdqU0o=
 github.com/abmpio/webserver v0.0.0-20250505084631-bdad4b542e1c h1:yyJhNgaxxxfiToZ13v2/+mZa9eyGP1VxN0axNNq75vQ=
 github.com/abmpio/webserver v0.0.0-20250505084631-bdad4b542e1c/go.mod h1:fuElTNM50ZaaV0twuY0XrmYKzeKyQGO1KpsDkzqeh84=
 github.com/ajg/form v1.5.1 h1:t9c7v8JUKu/XxOGBU0yjNpaMloxGEJhUkqFRq0ibGeU=
