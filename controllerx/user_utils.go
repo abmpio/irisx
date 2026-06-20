@@ -56,3 +56,21 @@ func FilterMustIsCurrentUserId(entity interface{}, ctx iris.Context) bool {
 	}
 	return ok
 }
+
+// check user is current login user
+func FilterUserIdIsCurrentUserId(userId string, ctx iris.Context) bool {
+	if userId == "" {
+		return false
+	}
+	loginedUserId := GetUserId(ctx)
+	if loginedUserId == "" {
+		return false
+	}
+	ok := userId == loginedUserId
+	if !ok {
+		log.Warn(fmt.Sprintf("用户Id(%s) 不属于当前登录的用户id(%s)",
+			userId,
+			loginedUserId))
+	}
+	return ok
+}
